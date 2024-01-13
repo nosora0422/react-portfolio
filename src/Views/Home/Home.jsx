@@ -3,8 +3,9 @@ import Banner from '../../Components/Banner/Banner';
 import Button from '../../Components/Button/Button';
 import Card from '../../Components/Card/Card';
 import Carousel from '../../Components/Carousel/Carousel';
-
 import ProjectData from '../../Components/ProjectData/ProjectData';
+import HomeBanner from "../../Assets/Spline/HomeBanner/HomeBanner";
+
 
 
 export default function Home(){
@@ -26,7 +27,9 @@ export default function Home(){
                 h2first='FRONT-END'
                 h2second='DEVELOPER'
                 disc="I’m a front-end developer who enjoys challenges and problem-solving through code." 
-                avatar='iphone-avatar.png' 
+                avatar='iphone-avatar.png'
+                bannercomp={HomeBanner}
+                btn='Who I am ?' 
             />
             <section className="my-grid max-w-[1200px] mx-auto py-20 px-6 lg:py-40" id="first-section">
                 <div className="col-span-12 home-project-wrapper">
@@ -37,7 +40,7 @@ export default function Home(){
                         </div>
                         <p className="body--gray max-w-[500px]">I've achieved the project goals by focusing on building useful, reusable, and maintainable code to solve problems. </p>
                     </div>
-                    <div className="my-grid lg:gap-10 my-10">
+                    <div className="my-grid gap-y-10 my-10 lg:gap-10 ">
                         {projectItems}
                     </div>
                     <Button text='More Projects'/>

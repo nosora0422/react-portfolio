@@ -1,6 +1,5 @@
-
+import ProjectBanner from "../../Assets/Spline/ProjectBanner/ProjectBanner";
 import Banner from '../../Components/Banner/Banner';
-import Button from '../../Components/Button/Button';
 import Card from '../../Components/Card/Card';
 import ProjectData from '../../Components/ProjectData/ProjectData';
 
@@ -24,6 +23,7 @@ export default function Projects(){
                 h2second='CHALLENGES'
                 disc="Check out my projects that show what I’m most passionate about!"
                 avatar='project-avatar.png'
+                bannercomp={ProjectBanner}
             />
             <section className="my-grid max-w-[1200px] mx-auto py-20 px-6 lg:py-40" id="first-section">
                 <div className="col-span-12 home-project-wrapper">
@@ -33,10 +33,9 @@ export default function Projects(){
                         </div>
                         <p className="body--gray max-w-[500px]">I've achieved the project goals by focusing on building useful, reusable, and maintainable code to solve problems. </p>
                     </div>
-                    <div className="my-grid lg:gap-10 my-10">
+                    <div className="my-grid my-10 gap-y-10 lg:gap-10 ">
                         {projectItems}
                     </div>
-                    <Button text='More Projects'/>
                 </div>
             </section>
         </>

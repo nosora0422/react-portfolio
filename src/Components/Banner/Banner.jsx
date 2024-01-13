@@ -1,11 +1,12 @@
-import HomeBanner from "../../Assets/Spline/HomeBanner/HomeBanner";
 import Button from "../Button/Button";
 
 export default function Banner(props){
+    const BannerComponent = props.bannercomp;
+    // console.log(BannerComponent);
     return(
         <section className="mx-auto h-svh relative flex justify-center">
             <div className=" w-screen h-svh">
-                <HomeBanner />
+                <BannerComponent />
             </div>
             <div className="my-grid px-6 absolute top-0 mx-auto">
                 <div className="col-span-12 max-w-1200 flex flex-col items-start mt-25vh z-10">
@@ -15,11 +16,11 @@ export default function Banner(props){
                             <img className="w-14 ml-4" 
                             src={require(`../../Assets/Images/${props.avatar}`)} alt="iphone-avatar" />
                         </div>
-                        <h2>{props.h2first}<br/>{props.h2second}<span className="point-dot"></span></h2>
+                        <h2>{props.h2first}<br/>{props.h2second}<span className={`point-dot ${props.h1 === 'ABOUT' ? '-bg--yellow' : ''}`}></span></h2>
                     </div>
                     <div className="body--gray flex flex-col justify-between items-start max-w-100 h-44">
                         {props.disc && <p className=" max-w-[600px] text-base font-Manrope font-medium lg:text-xl text-pretty">{props.disc}</p>}
-                        {props.btn && <Button text='Who am I ?'/>}
+                        {props.btn && <Button text={props.btn}/>}
                     </div>
                 </div>
             </div>
