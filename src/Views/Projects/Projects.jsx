@@ -9,9 +9,11 @@ export default function Projects(){
                     key={item.id} 
                     type={item.type} 
                     title={item.title} 
-                    discription={item.discription} 
+                    description={item.description} 
                     link={item.link} 
-                    path={item.img} 
+                    path={item.img}
+                    column={'md:col-span-6'}
+                    skills={item.skills} 
                 />
     })
     

@@ -1,6 +1,6 @@
 export default function Footer(){
     return(
-        <footer>
+        <footer className="bg-neutral-100">
             <div className="max-w-[1600px] mx-auto sticky font-Josefin font-black text-base flex flex-col justify-center py-5 lg:flex lg:py-5 lg:px-6">
                 <button className="logo" href="https://spline.design"></button>
                 <div className="flex items-center justify-center gap-2 lg:flex-col lg:bottom-5 lg:fixed">

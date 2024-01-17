@@ -1,4 +1,5 @@
 import Flickity from 'react-flickity-component';
+import './flickity.min.css';
 import RecommendationData from '../RecommendationData/RecommendationData';
 
 const flickityOptions = {
@@ -6,16 +7,18 @@ const flickityOptions = {
 }
 
 export default function Carousel() {
+
     const recommendations = RecommendationData.map(item => {
             return (
-            <div className="flex flex-col justify-between w-72 h-112 bg-white p-6 mr-5 rounded-2xl" key={item.id}>
+            <div className="flex flex-col justify-between w-72 h-112 bg-white p-6 mr-5 rounded-2xl cursor-default" key={item.id}>
                 <div>
                     <p><i className="fa-solid fa-quote-left mb-5 -text--darkgrey"></i></p>
                     <p className="body--gray">{item.comment}</p>
                     <i className="fa-solid fa-quote-right block text-right mt-5 -text--darkgrey"></i>
                 </div>
-                <div className="flex justify-between items-center">
+                <div className="flex justify-between items-end">
                     <div>
+                        <a href={item.linkedin} target="new"><i className="fa-brands fa-linkedin mr-12 -text--darkgrey cursor-pointer"></i></a>
                         <p className="font-Manrope text-lg font-medium">{item.name}</p>
                         <p className="text-sm">{item.title}</p>
                     </div>

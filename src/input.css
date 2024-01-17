@@ -16,16 +16,16 @@
         @apply text-4xl font-bold -text--darkgrey font-Josefin sm:text-6xl sm:-mr-1.5 md:text-8xl md:-ml-1.5;
     }
     h3 {
-        @apply -text--darkgrey mb-6 mr-2 text-2xl font-black font-Josefin leading-none lg:text-5xl;
+        @apply -text--darkgrey mb-10 mr-2 text-2xl font-black font-Josefin leading-none lg:text-5xl;
     }
     h4{
-        @apply pt-1 pb-5 -text--darkgrey font-Manrope text-xl font-semibold leading-7;
+        @apply pt-1 pb-5 -text--darkgrey font-Manrope text-2xl font-semibold leading-7;
     }
     h5 {
-        @apply text-lg font-Josefin -text--darkgrey pb-5 font-semibold;
+        @apply text-2xl font-Josefin -text--darkgrey pb-5 font-semibold;
     }
     h6 {
-        @apply inline-block py-2 px-4 text-lg font-Josefin -text--darkgrey mb-5 font-semibold rounded-full border border-white;
+        @apply inline-block py-1 px-4 mb-5 text-lg font-Josefin -text--darkgrey font-semibold rounded-full border border-solid border-white;
     }
     a{
         @apply block no-underline;
@@ -40,10 +40,10 @@
         @apply text-3xl -text--darkgrey font-bold font-Josefin mb-4;
     }
     .body--gray{
-        @apply -text--darkgrey font-Manrope leading-6 font-normal;
+        @apply -text--darkgrey font-Manrope md:leading-7 font-normal ;
     }
     .body--white{
-        @apply -text--white font-Manrope leading-6 font-normal;
+        @apply -text--white font-Manrope md:leading-7 font-normal;
     }
     .my-grid{
         @apply grid grid-cols-12 gap-x-5;
@@ -52,7 +52,7 @@
         @apply inline-block w-3 h-3 rounded-full ml-1 -bg--blue;
     }
     .button{
-        @apply font-Manrope -bg--blue -text--white inline-block py-3 px-8 mt-5 rounded-full font-semibold drop-shadow-lg;
+        @apply relative font-Manrope -bg--blue -text--white inline-block py-3 px-8 mt-5 rounded-full font-semibold drop-shadow-lg hover:bg-blue-800;
     }
     .arrow-down{
         @apply -text--darkgrey w-10 h-10 absolute animate-bounce left-1/2 -translate-x-1/2 bottom-6 cursor-pointer ;

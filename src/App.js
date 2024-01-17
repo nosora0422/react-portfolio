@@ -1,5 +1,4 @@
 import './dist/output.css';
-import './flickity.min.css';
 import Header from './Shared/Header/Header';
 import Contact from './Components/Contact/Contact';
 import Footer from './Shared/Footer/Footer';

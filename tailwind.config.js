@@ -53,6 +53,9 @@ module.exports = {
         '112': '28rem',
         'cal': 'calc(100vh - 78px)'
       },
+      width:{
+        '38': '9.6rem'
+      },
       backgroundImage: {
         'spline': "url(https://app.spline.design/_assets/_icons/icon_favicon32x32.png)",
       },
