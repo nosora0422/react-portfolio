@@ -1,8 +1,12 @@
-export default function Button({ text }){
+import { Link } from 'react-router-dom';
+
+export default function Button({ text, link, yellow }){
     return(
         <div className="w-full flex justify-center">
-            <a className="button" href="index.html">{text} <i className="fa-solid fa-arrow-right"></i>
-            </a>
+            <Link to={link} className={ yellow ? "button -bg--yellow -text--darkgrey hover:bg-yellow-500" : "button" }>
+                {text} 
+                <i className="fa-solid fa-arrow-right ml-3"></i>
+            </Link>
         </div>
     )
 }

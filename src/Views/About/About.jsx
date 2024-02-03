@@ -1,5 +1,7 @@
 import Banner from '../../Components/Banner/Banner';
 import AboutBanner from '../../Assets/Spline/AboutBanner/AboutBanner';
+import Button from '../../Components/Button/Button';
+import resume from '../../Assets/Documents/sora_noh-CV.pdf'
 
 
 export default function About(){
@@ -7,8 +9,8 @@ export default function About(){
         <>
             <Banner 
                 h1='ABOUT'
-                h2first="I'M SORA NOH"
-                h2second="GOAL-DRIVEN"
+                h2first="HELLO! I'M"
+                h2second='GOAL-DRIVEN'
                 avatar='about-avatar.png'
                 bannercomp={AboutBanner}
             />
@@ -39,9 +41,9 @@ export default function About(){
                                         </p>
                                     </div>
                                     <div className="mb-14">
-                                        <h5>Honesty</h5>
+                                        <h5>Empathy</h5>
                                         <p className="body--gray">
-                                            I prioritize being honest with both myself and others to respect and foster trust. Honesty allows me to present my true self and build genuine relationships built on trust, ultimately enhancing my credibility in those relationships.
+                                            I consider empathy a cornerstone for cultivating meaningful relationships. The skill of understanding and appreciating different perspectives has proven invaluable, enabling me to collaboratively discover optimal solutions for both myself and others.
                                         </p>
                                     </div>    
                                 </div>
@@ -65,10 +67,15 @@ export default function About(){
                                     </div>
                                 </div>
                             </div>
+                            <Button text="View Projects" link="/projects" yellow={true}/>
                         </div>
-                        <div className="col-span-12 mb-24 h-96 flex flex-col items-center -order-1 md:mb-10 md:col-span-6 md:h-[70vh] md:sticky md:top-[15vh]">
-                            <img src={require('../../Assets/Images/Sora_Noh_Profile.jpg')} className="w-full max-w-[800px] h-full object-top object-cover rounded-2xl drop-shadow-lg" alt="Sora Noh Profile" />
-                            <a className="button -bg--yellow -text--darkgrey drop-shadow-lg hover:bg-yellow-500" href="asset/sora_noh-CV.pdf" target="new">Resume<i className="fa-solid fa-arrow-right ml-2 -text--darkgrey"></i></a>
+                        <div className="col-span-12 flex flex-col items-center mb-24 h-96 -order-1 md:mb-0 md:col-span-6 md:h-[70vh] md:sticky md:top-[15vh]">
+                            <img 
+                                src={require('../../Assets/Images/Sora_Noh_Profile.jpg')} 
+                                className="w-full max-w-[800px] h-full object-top object-cover rounded-2xl drop-shadow-lg" 
+                                alt="Sora Noh Profile" 
+                            />
+                            <a className="button -bg--yellow -text--darkgrey hover:bg-yellow-500" href={resume} target='new'>Resume <i className="ml-3 fa-solid fa-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>

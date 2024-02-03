@@ -10,11 +10,7 @@ export default function App() {
       <Header />
       <div>
         <Outlet />
-        <Contact 
-            github='http://www.linkedin.com/in/sora-noh'
-            email='mailto:nosora0422@gmail.com'
-            linkedin='http://github.com/nosora0422'
-        />
+        <Contact />
       </div>
       <Footer />
     </div>

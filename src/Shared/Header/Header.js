@@ -17,7 +17,7 @@ export default function Header(){
     <header>
         <nav className="w-full hidden lg:block lg:px-6">
             <div className="max-w-[1600px] mx-auto flex justify-between items-center">
-                <div className="w-24 h-full -bg--body--backgroundColor py-2 px-4 rounded-full">
+                <div className="w-28 h-full -bg--body--backgroundColor py-2 px-4 rounded-full">
                     <a href="/home">
                         <img src={logo} className="w-full" alt="logo-img" />
                     </a>
@@ -51,7 +51,8 @@ export default function Header(){
                                         cRoute.pathname ==='/projects/logo-animation'|| 
                                         cRoute.pathname ==='/projects/responsive-website'|| 
                                         cRoute.pathname ==='/projects/email-template'||
-                                        cRoute.pathname ==='/projects/webflow-website'
+                                        cRoute.pathname ==='/projects/webflow-website'||
+                                        cRoute.pathname ==='/projects/react-note'
                                     ) 
                                     ? 'py-3 px-8 text-center font-Josefin rounded-full text-sm leading-none -text--white -bg--nav--darkgray ' : 'py-3 px-8 text-center font-Josefin rounded-full text-sm leading-none -text--white hover:bg-neutral-500'
                                     }>
@@ -61,7 +62,9 @@ export default function Header(){
                                      cRoute.pathname==='/projects/logo-animation'|| 
                                      cRoute.pathname ==='/projects/responsive-website'|| 
                                      cRoute.pathname ==='/projects/email-template'||
-                                     cRoute.pathname ==='/projects/webflow-website') 
+                                     cRoute.pathname ==='/projects/webflow-website'||
+                                     cRoute.pathname ==='/projects/react-note'
+                                    ) 
                                      ? "point-dot" : "point-dot -bg--lightgray"}></span>
                             </Link>
                         </li>
@@ -114,7 +117,8 @@ export default function Header(){
                                     cRoute.pathname ==='/projects/logo-animation'|| 
                                     cRoute.pathname ==='/projects/responsive-website'|| 
                                     cRoute.pathname ==='/projects/email-template'||
-                                    cRoute.pathname ==='/projects/webflow-website'
+                                    cRoute.pathname ==='/projects/webflow-website'||
+                                    cRoute.pathname ==='/projects/react-note'
                                 ) 
                                 ? 'py-4 px-6 text-right font-Josefin rounded-full text-lg leading-none -text--white -bg--nav--darkgray my-3' :'font-Josefin text-right text-lg leading-none -text--white py-4 px-4 my-3'}
                             onClick={handleToggle}    
@@ -125,7 +129,9 @@ export default function Header(){
                                 cRoute.pathname==='/projects/logo-animation'|| 
                                 cRoute.pathname ==='/projects/responsive-website'|| 
                                 cRoute.pathname ==='/projects/email-template'||
-                                cRoute.pathname ==='/projects/webflow-website') 
+                                cRoute.pathname ==='/projects/webflow-website'||
+                                cRoute.pathname ==='/projects/react-note'
+                            ) 
                                 ? "point-dot" : "point-dot -bg--lightgray"}></span>
                         </Link>
                     </li>

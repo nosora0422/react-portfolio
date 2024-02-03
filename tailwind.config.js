@@ -14,7 +14,8 @@ module.exports = {
         '--body--backgroundColor':'#fcfcfc',
         '--nav--darkgray': 'rgba(72,71,71,0.5)',
         '--gradient-dark': 'rgba(33,33,33,1)',
-        '--gradient-light': 'rgba(56,56,56,1)'
+        '--gradient-light': 'rgba(56,56,56,1)',
+        '--dark--container': '#555555'
       },
       fontFamily: {
         Josefin: ['"Josefin Sans"', ...defaultTheme.fontFamily.sans],
@@ -32,7 +33,8 @@ module.exports = {
       },
       margin:{
         '25vh': '25svh',
-        '100px': '100px'
+        '100px': '100px',
+        
       },
       aspectRatio: {
         '4/3': '4 / 3',

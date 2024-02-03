@@ -1,5 +1,6 @@
-
-export default function ProcessCard({ phase, content, img, number }){
+import SyntaxHighlighter from 'react-syntax-highlighter';
+import { atomOneDark } from 'react-syntax-highlighter/dist/esm/styles/hljs';
+export default function ProcessCard({ phase, content, img, number, code, language }){
     return(
         <div className=" -bg--darkgrey box-animation rounded-2xl p-8 my-10 md:p-10 drop-shadow-md">
             <div className="my-grid">
@@ -17,7 +18,21 @@ export default function ProcessCard({ phase, content, img, number }){
                     )}
                 </div>
                 <div className="col-span-12 md:col-span-6 aspect-4/3">
-                    <img src={img} className="w-full h-full rounded-lg object-top object-cover" alt="mindmap"/>
+                    {img && <img src={img} className="w-full h-full rounded-lg object-top object-cover" alt={phase}/>}
+                    {code && 
+                    <SyntaxHighlighter 
+                                language={language} 
+                                style={atomOneDark} 
+                                customStyle={{
+                                    borderRadius: '10px',
+                                    fontSize: '1rem',
+                                    overflowX: 'scroll',
+                                    height: '100%',
+                                    scrollbarWidth: 'thin',
+                                    scrollbarColor: 'grey transparent'
+                                }}>
+                        {code}
+                    </SyntaxHighlighter>}
                 </div>
             </div>
         </div>

@@ -1,7 +1,7 @@
 import ProjectBanner from "../../Assets/Spline/ProjectBanner/ProjectBanner";
 import Banner from '../../Components/Banner/Banner';
 import Card from '../../Components/Card/Card';
-import ProjectData from '../../Components/ProjectData/ProjectData';
+import ProjectData from "../../Data/ProjectData";
 
 export default function Projects(){
     const projectItems = ProjectData.map(item => {
@@ -12,7 +12,7 @@ export default function Projects(){
                     description={item.description} 
                     link={item.link} 
                     path={item.img}
-                    column={'md:col-span-6'}
+                    column={'lg:col-span-6'}
                     skills={item.skills} 
                 />
     })
