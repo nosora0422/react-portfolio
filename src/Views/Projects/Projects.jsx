@@ -1,19 +1,28 @@
+import { useNavigate } from "react-router-dom";
+
 import ProjectBanner from "../../Assets/Spline/ProjectBanner/ProjectBanner";
 import Banner from '../../Components/Banner/Banner';
 import Card from '../../Components/Card/Card';
 import ProjectData from "../../Data/ProjectData";
 
 export default function Projects(){
+    const navigate = useNavigate();
+
+    const handleCardClick = (id) => {
+        navigate(`${process.env.PUBLIC_URL}/project-details/${id}`);
+    };
+
+
     const projectItems = ProjectData.map(item => {
         return <Card
                     key={item.id} 
                     type={item.type} 
                     title={item.title} 
                     description={item.description} 
-                    link={item.link} 
                     path={item.img}
                     column={'lg:col-span-6'}
                     skills={item.skills} 
+                    onClick={( )=> handleCardClick(item.id)}
                 />
     })
     
@@ -46,6 +55,5 @@ export default function Projects(){
                 </div>
             </section>
         </>
-        
     )
 }

@@ -1,3 +1,5 @@
+import { useNavigate } from 'react-router-dom';
+
 import Banner from '../../Components/Banner/Banner';
 import Button from '../../Components/Button/Button';
 import Card from '../../Components/Card/Card';
@@ -7,16 +9,22 @@ import HomeBanner from "../../Assets/Spline/HomeBanner/HomeBanner";
 
 
 export default function Home(){
+    const navigate = useNavigate();
+
+    const handleCardClick = (id) => {
+        navigate(`${process.env.PUBLIC_URL}/project-details/${id}`);
+    };
+
     const projectItems = ProjectData.slice(0, 2).map((item) => {
         return <Card
                     key={item.id} 
                     type={item.type} 
                     title={item.title} 
                     description={item.description} 
-                    link={item.link} 
                     path={item.img}
                     column={'lg:col-span-6'}
                     skills={item.skills}
+                    onClick={( )=> handleCardClick(item.id)}
                 />
     })
     // console.log('home loading');

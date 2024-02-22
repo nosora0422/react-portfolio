@@ -3,7 +3,7 @@ import Codeblock from "../CodeBlock/CodeBlock";
 import ProjectDetailCard from "../ProjectDetailCard/ProjectDetailCard";
 import Carousel from "../Flickity/Flickity";
 
-export default function ProjectDetail({project}){
+export default function ProjectDetail({ project }){
 
     return(
         <section id="first-section">
