@@ -1,5 +1,5 @@
 {
-  "homepage": "https://react-portfolio.sarahnoh.ca/",
+  "homepage": "https://sarahnoh.ca/",
   "name": "react-portfolio",
   "version": "0.1.0",
   "private": true,
@@ -10,9 +10,11 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "concurrently": "^8.2.2",
+    "flickity": "^2.3.0",
     "framer-motion": "^11.0.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-flickity-component": "^4.0.7",
     "react-helmet": "^6.1.0",
     "react-router-dom": "^6.21.1",
     "react-scripts": "5.0.1",

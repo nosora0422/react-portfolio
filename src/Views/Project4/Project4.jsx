@@ -23,13 +23,7 @@ export default function Project4(){
         <>
             <div className="relative">
                 <ProjectBanner 
-                    key={project4.id}
-                    type={project4.type}
-                    title={project4.title}
-                    disc={project4.description}
-                    path={project4.img}
-                    linkto={project4.demolink}
-                    skills={project4.skills}
+                    project={project4}
                 />
                 <ProjectDetail project={project4} />
             </div>

@@ -1,7 +1,7 @@
 import Banner from '../../Components/Banner/Banner';
 import AboutBanner from '../../Assets/Spline/AboutBanner/AboutBanner';
 import Button from '../../Components/Button/Button';
-import resume from '../../Assets/Documents/sora_noh-CV.pdf'
+import resume from '../../Assets/Documents/sora_noh_resume.pdf'
 
 
 export default function About(){
@@ -9,13 +9,14 @@ export default function About(){
         <>
             <Banner 
                 h1='ABOUT'
-                h2first="HELLO! I'M"
-                h2second='GOAL-DRIVEN'
+                h2first="HELLO! I'M &nbsp;"
+                //h2second takes [string arrays] or 'string'
+                h2second={['GOAL-DRIVEN','FAST-LEARNER','DETAIL-ORIENTED']}
                 avatar='about-avatar.png'
                 bannercomp={AboutBanner}
             />
             <section className="about" id="first-section">
-                <div className="max-w-[1200px] mx-auto py-20 px-6">
+                <div className="max-w-[1200px] mx-auto py-20 px-6 box-border">
                     <div className="my-grid">
                         <div className="col-span-12 md:col-span-6 md:pl-6">
                             <div className="mb-14">
@@ -29,15 +30,15 @@ export default function About(){
                                 <h3>MY CORE VALUES<span className="point-dot -bg--yellow"></span></h3>
                                 <div>
                                     <div className="mb-14">
-                                        <h5>Achievement</h5>
+                                        <h5>Community</h5>
                                         <p className="body--gray">
-                                            I'm driven to succeed in any environment I find myself in. I confront challenges directly, strategically plan to accomplish my goals, and continuously aim to surpass expectations. Throughout this journey, I prioritize extending support to those who may need it, ensuring no one is left behind. 
+                                             Embracing community-centred values, I prioritize mutual growth through respect and empathy. Driven by a commitment to service, and continuously striving to become a better person by surpassing expectations, I believe in leveraging personal growth to enhance the collective experience.
                                         </p>
                                     </div>
                                     <div className="mb-14">
                                         <h5>Challenge</h5>
                                         <p className="body--gray">
-                                            I enjoy challenges. In fact, I see them as chances to learn and grow. For all that, I aim for efficient solutions that challenge me. I focus on improving efficiency and finding better ways to tackle obstacles, which helps me earn the trust of those around me and contribute positively to their success and mine.
+                                            I enjoy challenges. In fact, I see them as chances to learn and grow. For all that, I aim for efficient solutions that challenge me. I focus on improving efficiency and finding better ways to tackle obstacles, which helps contribute positively to their success and mine.
                                         </p>
                                     </div>
                                     <div className="mb-14">
@@ -52,8 +53,8 @@ export default function About(){
                                 <h3>SKILLS<span className="point-dot -bg--yellow"></span></h3>
                                 <div>
                                     <div className="mb-14">
-                                        <h5>Programming Languages</h5>
-                                        <p className="body--gray">HTML, CSS, JavaScript, PHP </p>
+                                        <h5>Programming Language & Library</h5>
+                                        <p className="body--gray">HTML, CSS, JavaScript, PHP, React.js, React Native, Tailwind, Bootstrap</p>
                                     </div>
         
                                     <div className="mb-14">
@@ -63,19 +64,21 @@ export default function About(){
         
                                     <div className="mb-14">
                                         <h5>Database & System</h5>
-                                        <p className="body--gray">MySQL, Webflow, Wordpress</p>
+                                        <p className="body--gray">MySQL, Webflow, Wordpress, Firebase</p>
                                     </div>
                                 </div>
                             </div>
                             <Button text="View Projects" link="/projects" yellow={true}/>
                         </div>
-                        <div className="col-span-12 flex flex-col items-center mb-24 h-96 -order-1 md:mb-0 md:col-span-6 md:h-[70vh] md:sticky md:top-[15vh]">
-                            <img 
-                                src={require('../../Assets/Images/Sora_Noh_Profile.jpg')} 
-                                className="w-full max-w-[800px] h-full object-top object-cover rounded-2xl drop-shadow-lg" 
-                                alt="Sora Noh Profile" 
-                            />
-                            <a className="button -bg--yellow -text--darkgrey hover:bg-yellow-500" href={resume} target='new'>Resume <i className="ml-3 fa-solid fa-arrow-right"></i></a>
+                        <div className="relative col-span-12 -order-1 md:col-span-6 ">
+                            <div className='flex flex-col items-center h-auto mb-24 md:mb-0 md:sticky md:top-[15vh]'>
+                                <img 
+                                    src={require('../../Assets/Images/Sora_Noh_Profile.jpg')} 
+                                    className="w-full max-w-[800px] md:h-[70vh] object-top object-cover rounded-2xl drop-shadow-lg" 
+                                    alt="Sora Noh Profile" 
+                                />
+                                <a className="button -bg--yellow -text--darkgrey hover:bg-yellow-500" href={resume} target='new'>Resume <i className="ml-3 fa-solid fa-arrow-right"></i></a>
+                            </div>
                         </div>
                     </div>
                 </div>

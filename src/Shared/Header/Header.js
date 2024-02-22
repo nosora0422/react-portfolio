@@ -2,6 +2,7 @@ import logo from "../../Assets/Images/logo-gray-transp.png";
 import whiteLogo from "../../Assets/Images/Logo-white.png";
 import { Link, useLocation } from "react-router-dom";
 import { useState } from 'react';
+import { motion, useAnimate } from 'framer-motion';
 
 export default function Header(){
     const cRoute = useLocation();
@@ -12,6 +13,34 @@ export default function Header(){
         setIsOpen(prev => !prev);
         setHeaderIcon(prev => !prev);
       };
+
+    const animateMenu = (pathname) => {
+        let translateDistance = 166;
+        if (pathname === '/home' || cRoute.pathname === '/') {
+            translateDistance = 166 * 0; 
+        } else if(pathname === '/about') {
+            translateDistance = 166 * 1 ;
+        }
+        else if (pathname === '/projects'||
+                '/projects/logo-animation'|| 
+                '/projects/responsive-website'|| 
+                '/projects/email-template'||
+                '/projects/webflow-website'||
+                '/projects/react-note'||
+                '/projects/react-movie-app') {
+            translateDistance = 166 * 2; 
+        }
+    
+        return {
+            initial: { translateX: 0 },
+            animate: { translateX: translateDistance },
+            transition: { 
+                duration: 0.5, 
+                delay: 0.3, 
+                ease: 'easeOut'
+            },
+        };
+    };
 
     return(
     <header>
@@ -24,10 +53,15 @@ export default function Header(){
                 </div>
                 <div className="rounded-full -bg--nav--darkgray backdrop-blur-sm border border-solid 1px -border--lightgray">
                     <ul className="p-0.5 flex items-center gap-3">
+                        <motion.li 
+                            className="absolute w-38 -z-10 py-3 pl-8 pr-6 text-center font-Josefin rounded-full text-sm leading-none text-transparent -bg--nav--darkgray"
+                            {...animateMenu(cRoute.pathname)}
+                        >Home
+                        </motion.li>
                         <li className="inline-block w-38">
                             <Link 
                                 to="/" 
-                                className={(cRoute.pathname === '/' || cRoute.pathname === '/home') ? 'py-3 pl-8 pr-6 text-center font-Josefin rounded-full text-sm leading-none -text--white -bg--nav--darkgray ' : 'py-3 pl-8 pr-6 text-center font-Josefin rounded-full text-sm leading-none -text--white hover:bg-neutral-500'}
+                                className='py-3 pl-8 pr-6 text-center font-Josefin rounded-full text-sm leading-none -text--white'
                                 >
                                 HOME
                                 <span className={(cRoute.pathname === '/' || cRoute.pathname === '/home') ? "point-dot" : "point-dot -bg--lightgray"}></span>
@@ -36,7 +70,7 @@ export default function Header(){
                         <li className="inline-block w-38">
                             <Link 
                                 to="/about" 
-                                className={(cRoute.pathname === '/about') ? 'py-3 pl-8 pr-6 text-center font-Josefin rounded-full text-sm leading-none -text--white -bg--nav--darkgray ' : 'py-3 pl-8 pr-6 text-center font-Josefin rounded-full text-sm leading-none -text--white hover:bg-neutral-500'}
+                                className='py-3 pl-8 pr-6 text-center font-Josefin rounded-full text-sm leading-none -text--white '
                                 >
                                 ABOUT
                                 <span className={(cRoute.pathname === '/about') ? "point-dot -bg--yellow" : "point-dot -bg--lightgray"}></span>
@@ -45,17 +79,7 @@ export default function Header(){
                         <li className="inline-block w-38">
                             <Link 
                                 to="/projects" 
-                                className={
-                                    (
-                                        cRoute.pathname === '/projects'|| 
-                                        cRoute.pathname ==='/projects/logo-animation'|| 
-                                        cRoute.pathname ==='/projects/responsive-website'|| 
-                                        cRoute.pathname ==='/projects/email-template'||
-                                        cRoute.pathname ==='/projects/webflow-website'||
-                                        cRoute.pathname ==='/projects/react-note'
-                                    ) 
-                                    ? 'py-3 px-8 text-center font-Josefin rounded-full text-sm leading-none -text--white -bg--nav--darkgray ' : 'py-3 px-8 text-center font-Josefin rounded-full text-sm leading-none -text--white hover:bg-neutral-500'
-                                    }>
+                                className='py-3 px-8 text-center font-Josefin rounded-full text-sm leading-none -text--white'>
                                 PROJECTS
                                 <span className={
                                     (cRoute.pathname === '/projects' ||
@@ -63,7 +87,8 @@ export default function Header(){
                                      cRoute.pathname ==='/projects/responsive-website'|| 
                                      cRoute.pathname ==='/projects/email-template'||
                                      cRoute.pathname ==='/projects/webflow-website'||
-                                     cRoute.pathname ==='/projects/react-note'
+                                     cRoute.pathname ==='/projects/react-note'||
+                                     cRoute.pathname ==='/projects/react-movie-app'
                                     ) 
                                      ? "point-dot" : "point-dot -bg--lightgray"}></span>
                             </Link>
@@ -118,7 +143,8 @@ export default function Header(){
                                     cRoute.pathname ==='/projects/responsive-website'|| 
                                     cRoute.pathname ==='/projects/email-template'||
                                     cRoute.pathname ==='/projects/webflow-website'||
-                                    cRoute.pathname ==='/projects/react-note'
+                                    cRoute.pathname ==='/projects/react-note'||
+                                    cRoute.pathname ==='/projects/react-movie-app'
                                 ) 
                                 ? 'py-4 px-6 text-right font-Josefin rounded-full text-lg leading-none -text--white -bg--nav--darkgray my-3' :'font-Josefin text-right text-lg leading-none -text--white py-4 px-4 my-3'}
                             onClick={handleToggle}    
@@ -130,7 +156,8 @@ export default function Header(){
                                 cRoute.pathname ==='/projects/responsive-website'|| 
                                 cRoute.pathname ==='/projects/email-template'||
                                 cRoute.pathname ==='/projects/webflow-website'||
-                                cRoute.pathname ==='/projects/react-note'
+                                cRoute.pathname ==='/projects/react-note'||
+                                cRoute.pathname ==='/projects/react-movie-app'
                             ) 
                                 ? "point-dot" : "point-dot -bg--lightgray"}></span>
                         </Link>

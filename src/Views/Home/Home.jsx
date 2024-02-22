@@ -1,5 +1,3 @@
-import { useLocation} from 'react-router-dom';
-
 import Banner from '../../Components/Banner/Banner';
 import Button from '../../Components/Button/Button';
 import Card from '../../Components/Card/Card';
@@ -9,9 +7,7 @@ import HomeBanner from "../../Assets/Spline/HomeBanner/HomeBanner";
 
 
 export default function Home(){
-    const cLocation = useLocation()
-
-    const projectItems = ProjectData.map((item) => {
+    const projectItems = ProjectData.slice(0, 2).map((item) => {
         return <Card
                     key={item.id} 
                     type={item.type} 
@@ -23,8 +19,8 @@ export default function Home(){
                     skills={item.skills}
                 />
     })
-    console.log('home loading');
-    console.log(cLocation);
+    // console.log('home loading');
+    // console.log(cLocation);
     return(
         <>
             <Banner 

@@ -1,6 +1,6 @@
 import { useNavigate, Link } from "react-router-dom";
 
-export default function Card({ type, title, description, link, path, column, skills }){
+export default function Card({ type, title, description, link, path, column, skills, piece }){
     // const cLocation = useLocation()
     // console.log('card loading');
     // console.log(cLocation.pathname);
@@ -16,7 +16,7 @@ export default function Card({ type, title, description, link, path, column, ski
             <div className={`col-span-12 md:col-span-6 md:p-4 ${column} relative bg-white rounded-2xl drop-shadow-md transition-transform transition-filter duration-300 ease-in-out cursor-pointer hover:-translate-x-2 hover:-translate-y-2 hover:drop-shadow-xl`} onClick={handleClick}>
                 <div className="flex flex-col h-full" id="project1">
                     <img 
-                        className="w-full object-cover object-center aspect-4/3 rounded-xl" 
+                        className="w-full object-cover object-center aspect-4/3 rounded-lg" 
                         src={path} 
                         alt={title}
                     />

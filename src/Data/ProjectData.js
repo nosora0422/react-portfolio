@@ -1,7 +1,7 @@
 const projects = [
     {
         id:0,
-        type:'Full-stack', 
+        type:'Front-end', 
         title:'React Note App',
         skills: ['React.js','Tailwind','Firebase'], 
         description:'The project aimed to build a responsive web app for creating notes, images, and to-do lists. The app utilizes local storage and Firebase to store object arrays and user sign-up information.',
@@ -12,11 +12,11 @@ const projects = [
         keyPoint:[
             { 
                 id:0,
-                cardTitle:'Functions',
+                cardTitle:'Function',
                 content:[
                     {
                         list:'To Do List',
-                        listDisc:'The user can create mutiple To do list and mark indevidual itmes as compledted1.'
+                        listDisc:'The user can create mutiple To do list and mark indevidual itmes as compledted.'
                     },
                     {
                         list:'Note',
@@ -24,7 +24,7 @@ const projects = [
                     },
                     {
                         list:'Image Note',
-                        listDisc:'Enable users to upload, view, and manage images within the application.'
+                        listDisc:'The app enables users to upload, view, and manage images within the application.'
                     }
                 ]
             },
@@ -153,339 +153,33 @@ const projects = [
             },
             {
                 id:2,
-                phase:'Development',
+                language:'javascript',
                 name: 'react-router-dom',
                 codeBlock:
     ` 
     const root = ReactDOM.createRoot(document.getElementById('root'));
     root.render(
         <BrowserRouter>
-            <Routes>
-                <Route path="/" element={<App />}>
-                <Route index element={<Home />} />
-                <Route path="home" element={<Home />} />
-                <Route path="about" element={<About />} />
-                <Route path="projects" element={<Projects />} />
-                <Route path="projects/react-note" element={<Project1 />} />
-                <Route path="projects/logo-animation" element={<Project2 />} />
-                <Route path="projects/responsive-website" element={<Project3 />} />
-                <Route path="projects/webflow-website" element={<Project4 />} />
-                <Route path="projects/email-template" element={<Project5 />} />
-                </Route>
-            </Routes>
+          <Routes>
+            <Route path="/" element={<Login />}>
+              <Route index element={<Login />} />
+            </Route>
+            <Route path="/signup" element={<Signup />} />
+            <Route path="app" element={<App />}>
+              <Route index element={<ToDoList />} />
+              <Route path="to-do-list" element={<ToDoList />} />
+              <Route path="note" element={<Note />} />
+              <Route path="image" element={<Images />} />
+            </Route>
+          </Routes>
         </BrowserRouter>
-    );
+      );
     `              
             }
         ]
     },
     {
         id:1,
-        type:'Front-end', 
-        title:'Logo Animation',
-        skills: ['HTML','CSS','JS'], 
-        description:'The goal of the project was to create a personal logo animation combining skills of graphic design and animation using CSS keyframes.',
-        link:`${process.env.PUBLIC_URL}/projects/logo-animation`,
-        img: '../Assets/Images/project1-thumbnail.jpg',
-        demolink:'https://logoanimation.sarahnoh.ca/',
-        overview: 'The project includes a personal logo that was created as an SVG file and the use of CSS keyframes and JS functions. The endeavour demanded considerable dedication to the brainstorming and sketching phases, as the logo bore deep significance to personal identity. The logo animation was implemented to a single landing page in order to go beyond the initial goal and showcase the example of usage in the real world.',
-        keyPoint:[
-            { 
-                id:0,
-                cardTitle:'SVG',
-                content:[
-                    {
-                        list:'SVGOMG',
-                        listDisc:'Optimized SVG file using SVGOMG for clean and readable code.'
-                    },
-                    {
-                        list:'SVG CSS Organization',
-                        listDisc:'Organized SVG styles in a separate CSS file.'
-                    },
-                ]
-            },
-            { 
-                id:1,
-                cardTitle:'Animation',
-                content:[
-                    {
-                        list:'Logo animation',
-                        listDisc:'Each SVG elements were animated seperately with @keyframes.'
-                    },
-                    {
-                        list:'Text animation',
-                        listDisc:' each character was given with own id name to animate with @keyframes.'
-                    },
-                ]
-            },
-            { 
-                id:2,
-                cardTitle:'Challange & Solution',
-                content:[
-                    {
-                        list:'Repetitive keyframes',
-                        listDisc:'Adding individual id name and animating with the individual keyframes are time-consuming and repetitive.'
-                    },
-                    {
-                        list:'querySelectorAll()',
-                        listDisc:' the same class names were assigned to these elements instead, enabling the use of \'querySelectorAll()\' and \'for\' loop statement. In the final step, the animation was completed using a user-defined function with the \'animate()\' method.'
-                    },
-                ]
-            },
-        ],
-        code:[
-            {
-                id:0,
-                language:'css',
-                name: 'SVG CSS',
-                codeBlock:
-    `// style.css
-
-    .cls-1{
-        fill:#bcbec0;
-    }
-    
-    .cls-2{
-        fill:none;
-        stroke:#bcbec0;
-        stroke-miterlimit:10;
-        stroke-width:.47px;
-    }
-    
-    .cls-3{
-        stroke:#000;
-        stroke-miterlimit:10;
-        stroke-width:.25px;
-        transition-timing-function: ease-in;
-    }
-
-    .cls-4{
-        fill: none;
-        stroke: #000;
-        stroke-linejoin: round;
-        stroke-width: 4px;
-        animation: arrowAnimation 1s ease-in-out infinite;
-    }`
-                    
-            },
-            {
-                id:1,
-                language:'css',
-                name: '@keyframes',
-                codeBlock:
-    `
-    @keyframes noMove {
-        0%{
-            stroke-dashoffset: 289.5;
-        }
-        5%{
-            stroke-dashoffset: 289.5;
-        }
-        30%{
-            stroke-dashoffset: -160.4;
-        }
-        100%{
-            stroke-dashoffset: -160.4;
-        }
-    }
-    
-    @keyframes connectionMove {
-        0%{
-            stroke-dashoffset: 75;
-        }
-        20%{
-            stroke-dashoffset: 75;
-        }
-        30%{
-            stroke-dashoffset: 0;
-        }
-        100%{
-            stroke-dashoffset: 0;
-        }
-    }
-    
-    .
-    .
-    .
-
-    @keyframes pointMove{
-        0%{
-            transform: rotate(0deg);
-        }
-        50%{
-            transform: rotate(1080deg);
-        }
-        100%{
-            transform: rotate(1080deg);
-        }
-    }
-
-    @keyframes ooMove{
-        0%{
-            transform: translateY(0%);
-            animation-timing-function: ease-out;
-        }
-        50%{
-            transform: translateY(-45%);
-            animation-timing-function: ease-in;
-        }
-        100%{
-            transform: translateY(0%);
-            animation-timing-function: ease-out;
-        }
-    }
-    
-    .
-    .
-    .`
-            },
-            {
-                id:2,
-                language:'javascript',
-                name: 'JS animate()',
-                codeBlock:
-    ` 
-    var shape = document.querySelector('#point');
-    var shapelength = shape.getTotalLength();
-    console.log(shapelength);
-
-    var myName = document.querySelectorAll(".cls-3");
-
-    for(var i = 0; i < myName.length; i++){
-        let company = myName[i];
-        animateMyName(company);
-    };
-
-    function animateMyName(name){
-
-        name.keyframes = [
-            {
-                transform: "translateY(0)",
-                offset: 0
-            },
-            {
-                transform: "translateY(-25%)",
-                offset: 0.5
-            },
-            {
-                transform: "translateY(0)",
-                offset: 1
-            }
-        ];
-
-        name.options = {
-            duration: 1500,
-            easing: "ease",
-            iterations: 2,
-            direction: "normal",
-            delay: 150*i,
-            fill: "both"
-        }
-
-        let animateMyName = name.animate(name.keyframes, name.options);
-    };`              
-            }
-        ]
-    },
-    {
-        id:2,
-        type:'Front-end', 
-        title:'Responsive Business Website',
-        skills: ['HTML','CSS','JS','jQuery'],  
-        description:'The goal was to demonstrate CSS skills using Media Query for responsive design with mobile UI patterns.',
-        link:`${process.env.PUBLIC_URL}/projects/responsive-website`,
-        img: '../Assets/Images/project2-thumbnail.jpg',
-        overview:'The choice of the topic aimed to highlight the development of a business website that not only prioritizes responsive design but also emphasizes the implementation of dynamic Jquery functions and JavaScript plug-ins.',
-        keyPoint:[
-            { 
-                id:0,
-                cardTitle:'Design',
-                content:[
-                    {
-                        list:'Sitemap',
-                        listDisc:'Following the research phase, initial design and planning steps were taken. The sitemap was created on Figjam with consideration of the main audience and user group.'
-                    },
-                    {
-                        list:'Wireframe',
-                        listDisc:'Afterwards, a low-fi wireframe for each page was created on Figma.'
-                    },
-                ]
-            },
-            { 
-                id:1,
-                cardTitle:'Responsive',
-                content:[
-                    {
-                        list:'Mobile First Approach',
-                        listDisc:'The process was started with a mobile-first approach for an efficient development process. As I started from mobile view first, was able to identify potential challenges early, streamline workflows, and reduce the need for extensive revisions during later stages of development.'
-                    },
-                    {
-                        list:'Break Point',
-                        listDisc:'@media screen and (min-width: 568px) @media screen and (min-width: 834px) @media screen and (min-width: 1080px)'
-                    },
-                ]
-            },
-            { 
-                id:2,
-                cardTitle:'Library',
-                content:[
-                    {
-                        list:'Flickity Carousel',
-                        listDisc:'A Flickity carousel plugin was implemented for dynamic card slide.'
-                    },
-                    {
-                        list:'jQuery',
-                        listDisc:'An accordion-style navigation bar was incorporated using JS in order to demonstrate the use of mobile UI design patterns.'
-                    },
-                ]
-            },
-        ],
-        code:[
-            {
-                id:0,
-                language:'css',
-                name: 'Media Query',
-                codeBlock:
-                `
-    //Mobile Break Point
-    @media screen and (min-width: 568px) {
-        
-    }
-
-    //Tablet Break Point
-    @media screen and (min-width: 834px) {
-        
-    }
-
-    //Desktop Break Point
-    @media screen and (min-width: 1080px) {
-        
-    }
-                `
-            },
-            {
-                id:1,
-                language:'javascript',
-                name: 'jQuery',
-                codeBlock:
-                `
-    //Jquery Hamberger Menu
-    (function(){
-        $(".hamburger").on("click", function(){	
-            $('.mobile ul').slideToggle();
-            $('.fa-bars').toggle(); 
-            $('.fa-xmark').toggle(); 
-        });
-    });
-
-    //Flickity carousel
-                `
-                    
-            }
-        ]
-    },
-    {
-        id:3,
         type:'Front-end', 
         title:'Webflow Website', 
         skills: ['Figma','Webflow','Agile'], 
@@ -542,10 +236,535 @@ const projects = [
                     },
                 ]
             },
+        ],
+        slideImg:[
+            {
+                name: 'Wireframe',
+                slideImgPath:'../../Assets/Images/webflow-wireframe2.png'
+            },
+            {
+                name: 'Reusable Components',
+                slideImgPath:'../../Assets/Images/webflow-comp.png'
+            },
+            {
+                name: 'Contact Form',
+                slideImgPath:'../../Assets/Images/webflow-contact.jpg'
+            },
+            {
+                name: 'Mobile Friendly',
+                slideImgPath:'../../Assets/Images/webflow-mobile.png'
+            },
         ], 
     },
     {
-        id:4,
+        id:2,
+        type:'Front-end', 
+        title:'React Movie Search App',
+        skills: ['React.js','CSS','API', 'JSON'], 
+        description:'The project aims to develop a TMDB movie application using the TMDB API, enabling users to access movie information efficiently. It includes features like saving favourite movies locally and sharing lists on social media.',
+        link:`${process.env.PUBLIC_URL}/projects/react-movie-app`,
+        img: '../Assets/Images/thumbnail-react-movie-app.jpg',
+        demolink:'https://nosora0422.github.io/react-movie-app/#/',
+        overview: 'Originally built with HTML, CSS, and JavaScript, the project transitioned to React.js for improved component management and API integration. Key functionalities include a search feature, saving favourites, and social media sharing, with a focus on optimizing API usage for a seamless user experience.',
+        keyPoint:[
+            { 
+                id:0,
+                cardTitle:'Function',
+                content:[
+                    {
+                        list:'Search',
+                        listDisc:'The user can search movies by the name of the movie.'
+                    },
+                    {
+                        list:'Browse Movie List',
+                        listDisc:'The category loades various movie lists, which enables easy and quick access to movie information.'
+                    },
+                ]
+            },
+            { 
+                id:1,
+                cardTitle:'Feature',
+                content:[
+                    {
+                        list:'Watch now',
+                        listDisc:'Each movie item provide with a link that redirects to TMDB pages for selected movie.'
+                    },
+                    {
+                        list:'Save to List',
+                        listDisc:'Users can save movies to the favourite list by clicking a heart icon.'
+                    },
+                    {
+                        list:'Share List',
+                        listDisc:'The user’s favourite list can be shared on their social media such as Facebook, WhatsApp, and Twitter. '
+                    }
+                ]
+            },
+            { 
+                id:3,
+                cardTitle:'Data',
+                content:[
+                    {
+                        list:'Local Storage',
+                        listDisc:'Get objects from local Storage and save new objects to local storage using setItem() and getItem() with JSON.parse() and JSON.stringify().'
+                    },
+                    {
+                        list:'API',
+                        listDisc:'Used TMDB API and used functions, fetch() to make network requests and json() to parse the body text to JSON.'
+                    },
+                ]
+            },
+            { 
+                id:4,
+                cardTitle:'Key Elements',
+                content:[
+                    {
+                        list:'createContext()',
+                        listDisc:'createContext() and Provider facilitated the sharing of global search terms among components.'
+                    },
+                    {
+                        list:'useEffect()',
+                        listDisc:'useEffect() ensured requests were made selectively, triggered by changes in dependencies like page size.'
+                    },
+                    {
+                        list:'map() & objext arrays',
+                        listDisc:'Utilizing map() with object arrays allowed for the dynamic generation of components, optimizing for efficient updates and revisions.'
+                    },
+                ]
+            },
+        ],
+        code:[
+            {
+                id:0,               
+                language:'javascript',
+                name:'Search',
+                codeBlock:
+    `
+    import React, { createContext, useState, useContext } from 'react';
+
+    const SearchContext = createContext();
+
+    export const useSearchContext = () => useContext(SearchContext);
+
+    export const SearchProvider = ({ children }) => {
+    const [searchTerm, setSearchTerm] = useState('');
+
+    return (
+        <SearchContext.Provider value={{ searchTerm, setSearchTerm }}>
+        {children}
+        </SearchContext.Provider>
+    );
+    };
+
+    //App.js
+
+    function App() {
+        return (
+          <>
+            <div className="grid">
+              <div className="col-1">
+                <Nav />
+              </div>
+              <div className="col-11 home">
+                <SearchProvider>
+                  <Header />
+                  <Outlet />
+                </SearchProvider>
+                <Footer />
+              </div>
+            </div>
+          </>
+        );
+      }
+      
+      export default App;      
+    `
+                    
+            },
+            {
+                id:1,
+                language: 'javascript',
+                name:'API and useEffect',
+                codeBlock:
+    `
+    const [dataResult, setDataResult] = useState(null);
+    const [pageSize, setPageSize] = useState(1);
+    const [favorites, setFavorites] = useState([]);
+    const fetchUri = \`https://api.themoviedb.org/3/movie/now_playing?api_key=cdde34990a2da61ed1772fc6be340638&page=\${pageSize}\`;
+
+    //Function to fetch API data 
+    const fetchData = (url) => {
+        fetch(url)
+        .then(res => res.json())
+        .then(
+            (result)=>{
+                if (dataResult && dataResult.results) {
+                    //If the current data is different than previous data, it add data from next page to current page. 
+                    setDataResult((prevData) => ({results: [prevData.result, ...result.results]}));
+                }else{
+                    //All other case, display data on the first page.
+                    setDataResult(result);
+                }
+                setIsLoaded(true);
+            },
+            (error)=>{
+                setError(error);
+                setIsLoaded(true);
+            }
+        )
+    };
+
+    //useEffect to run first mount and run again whenever pageSize updated.
+    useEffect(() => {
+        fetchData(fetchUri);
+    },[fetchUri]);
+    }
+    `
+            },
+            {
+                id:2,
+                language:'javascript',
+                name: 'react-router-dom',
+                codeBlock:
+    ` 
+    const [favorites, setFavorites] = useState([]);
+    useEffect(()=>{
+        const favoriteMovies = JSON.parse(localStorage.getItem('react-movie-app'));
+        if (favoriteMovies) {
+            setFavorites(favoriteMovies);
+        }
+    },[]);
+    //Function to determine movie id and add to favotrite list only a new item in the local storage
+    const addFavoriteMovie = (movie) =>{
+        const isSameItem = favorites.some((favorite) => favorite.id === movie.id)
+        
+        if (!isSameItem){
+            const newFavoriteMovie = [...favorites, { ...movie, isAddedToList: true }];
+            setFavorites(newFavoriteMovie);
+            // console.log(newFavoriteMovie);
+            saveToLocal(newFavoriteMovie);
+            alert('The movie has been successfully added to your list!');
+        } else {
+           alert('The movie already exists in your list!'); 
+        }
+    }
+    //Function to remove from favotrite list by filtering items that have different movie id than the selected item.
+    const removeFavouriteMovie = (movie) =>{
+        const newFavoriteMovie = favorites.filter((favorite)=>favorite.id !== movie.id);
+        setFavorites(newFavoriteMovie);
+        saveToLocal(newFavoriteMovie);
+        // console.log(newFavoriteMovie);
+    };
+    `              
+            }
+        ]
+    },
+    // {
+    //     id:3,
+    //     type:'Front-end', 
+    //     title:'Logo Animation',
+    //     skills: ['HTML','CSS','JS'], 
+    //     description:'The goal of the project was to create a personal logo animation combining skills of graphic design and animation using CSS keyframes.',
+    //     link:`${process.env.PUBLIC_URL}/projects/logo-animation`,
+    //     img: '../Assets/Images/project1-thumbnail.jpg',
+    //     demolink:'https://logoanimation.sarahnoh.ca/',
+    //     overview: 'The project includes a personal logo that was created as an SVG file and the use of CSS keyframes and JS functions. The endeavour demanded considerable dedication to the brainstorming and sketching phases, as the logo bore deep significance to personal identity. The logo animation was implemented to a single landing page in order to go beyond the initial goal and showcase the example of usage in the real world.',
+    //     keyPoint:[
+    //         { 
+    //             id:0,
+    //             cardTitle:'SVG',
+    //             content:[
+    //                 {
+    //                     list:'SVGOMG',
+    //                     listDisc:'Optimized SVG file using SVGOMG for clean and readable code.'
+    //                 },
+    //                 {
+    //                     list:'SVG CSS Organization',
+    //                     listDisc:'Organized SVG styles in a separate CSS file.'
+    //                 },
+    //             ]
+    //         },
+    //         { 
+    //             id:1,
+    //             cardTitle:'Animation',
+    //             content:[
+    //                 {
+    //                     list:'Logo animation',
+    //                     listDisc:'Each SVG elements were animated seperately with @keyframes.'
+    //                 },
+    //                 {
+    //                     list:'Text animation',
+    //                     listDisc:' each character was given with own id name to animate with @keyframes.'
+    //                 },
+    //             ]
+    //         },
+    //         { 
+    //             id:2,
+    //             cardTitle:'Challange & Solution',
+    //             content:[
+    //                 {
+    //                     list:'Repetitive keyframes',
+    //                     listDisc:'Adding individual id name and animating with the individual keyframes are time-consuming and repetitive.'
+    //                 },
+    //                 {
+    //                     list:'querySelectorAll()',
+    //                     listDisc:' the same class names were assigned to these elements instead, enabling the use of \'querySelectorAll()\' and \'for\' loop statement. In the final step, the animation was completed using a user-defined function with the \'animate()\' method.'
+    //                 },
+    //             ]
+    //         },
+    //     ],
+    //     code:[
+    //         {
+    //             id:0,
+    //             language:'css',
+    //             name: 'SVG CSS',
+    //             codeBlock:
+    // `// style.css
+
+    // .cls-1{
+    //     fill:#bcbec0;
+    // }
+    
+    // .cls-2{
+    //     fill:none;
+    //     stroke:#bcbec0;
+    //     stroke-miterlimit:10;
+    //     stroke-width:.47px;
+    // }
+    
+    // .cls-3{
+    //     stroke:#000;
+    //     stroke-miterlimit:10;
+    //     stroke-width:.25px;
+    //     transition-timing-function: ease-in;
+    // }
+
+    // .cls-4{
+    //     fill: none;
+    //     stroke: #000;
+    //     stroke-linejoin: round;
+    //     stroke-width: 4px;
+    //     animation: arrowAnimation 1s ease-in-out infinite;
+    // }`
+                    
+    //         },
+    //         {
+    //             id:1,
+    //             language:'css',
+    //             name: '@keyframes',
+    //             codeBlock:
+    // `
+    // @keyframes noMove {
+    //     0%{
+    //         stroke-dashoffset: 289.5;
+    //     }
+    //     5%{
+    //         stroke-dashoffset: 289.5;
+    //     }
+    //     30%{
+    //         stroke-dashoffset: -160.4;
+    //     }
+    //     100%{
+    //         stroke-dashoffset: -160.4;
+    //     }
+    // }
+    
+    // @keyframes connectionMove {
+    //     0%{
+    //         stroke-dashoffset: 75;
+    //     }
+    //     20%{
+    //         stroke-dashoffset: 75;
+    //     }
+    //     30%{
+    //         stroke-dashoffset: 0;
+    //     }
+    //     100%{
+    //         stroke-dashoffset: 0;
+    //     }
+    // }
+    
+    // .
+    // .
+    // .
+
+    // @keyframes pointMove{
+    //     0%{
+    //         transform: rotate(0deg);
+    //     }
+    //     50%{
+    //         transform: rotate(1080deg);
+    //     }
+    //     100%{
+    //         transform: rotate(1080deg);
+    //     }
+    // }
+
+    // @keyframes ooMove{
+    //     0%{
+    //         transform: translateY(0%);
+    //         animation-timing-function: ease-out;
+    //     }
+    //     50%{
+    //         transform: translateY(-45%);
+    //         animation-timing-function: ease-in;
+    //     }
+    //     100%{
+    //         transform: translateY(0%);
+    //         animation-timing-function: ease-out;
+    //     }
+    // }
+    
+    // .
+    // .
+    // .`
+    //         },
+    //         {
+    //             id:2,
+    //             language:'javascript',
+    //             name: 'JS animate()',
+    //             codeBlock:
+    // ` 
+    // var shape = document.querySelector('#point');
+    // var shapelength = shape.getTotalLength();
+    // console.log(shapelength);
+
+    // var myName = document.querySelectorAll(".cls-3");
+
+    // for(var i = 0; i < myName.length; i++){
+    //     let company = myName[i];
+    //     animateMyName(company);
+    // };
+
+    // function animateMyName(name){
+
+    //     name.keyframes = [
+    //         {
+    //             transform: "translateY(0)",
+    //             offset: 0
+    //         },
+    //         {
+    //             transform: "translateY(-25%)",
+    //             offset: 0.5
+    //         },
+    //         {
+    //             transform: "translateY(0)",
+    //             offset: 1
+    //         }
+    //     ];
+
+    //     name.options = {
+    //         duration: 1500,
+    //         easing: "ease",
+    //         iterations: 2,
+    //         direction: "normal",
+    //         delay: 150*i,
+    //         fill: "both"
+    //     }
+
+    //     let animateMyName = name.animate(name.keyframes, name.options);
+    // };`              
+    //         }
+    //     ]
+    // },
+    // {
+    //     id:4,
+    //     type:'Front-end', 
+    //     title:'Responsive Business Website',
+    //     skills: ['HTML','CSS','JS','jQuery'],  
+    //     description:'The goal was to demonstrate CSS skills using Media Query for responsive design with mobile UI patterns.',
+    //     link:`${process.env.PUBLIC_URL}/projects/responsive-website`,
+    //     img: '../Assets/Images/project2-thumbnail.jpg',
+    //     overview:'The choice of the topic aimed to highlight the development of a business website that not only prioritizes responsive design but also emphasizes the implementation of dynamic Jquery functions and JavaScript plug-ins.',
+    //     keyPoint:[
+    //         { 
+    //             id:0,
+    //             cardTitle:'Design',
+    //             content:[
+    //                 {
+    //                     list:'Sitemap',
+    //                     listDisc:'Following the research phase, initial design and planning steps were taken. The sitemap was created on Figjam with consideration of the main audience and user group.'
+    //                 },
+    //                 {
+    //                     list:'Wireframe',
+    //                     listDisc:'Afterwards, a low-fi wireframe for each page was created on Figma.'
+    //                 },
+    //             ]
+    //         },
+    //         { 
+    //             id:1,
+    //             cardTitle:'Responsive',
+    //             content:[
+    //                 {
+    //                     list:'Mobile First Approach',
+    //                     listDisc:'The process was started with a mobile-first approach for an efficient development process. As I started from mobile view first, was able to identify potential challenges early, streamline workflows, and reduce the need for extensive revisions during later stages of development.'
+    //                 },
+    //                 {
+    //                     list:'Break Point',
+    //                     listDisc:'@media screen and (min-width: 568px) @media screen and (min-width: 834px) @media screen and (min-width: 1080px)'
+    //                 },
+    //             ]
+    //         },
+    //         { 
+    //             id:2,
+    //             cardTitle:'Library',
+    //             content:[
+    //                 {
+    //                     list:'Flickity Carousel',
+    //                     listDisc:'A Flickity carousel plugin was implemented for dynamic card slide.'
+    //                 },
+    //                 {
+    //                     list:'jQuery',
+    //                     listDisc:'An accordion-style navigation bar was incorporated using JS in order to demonstrate the use of mobile UI design patterns.'
+    //                 },
+    //             ]
+    //         },
+    //     ],
+    //     code:[
+    //         {
+    //             id:0,
+    //             language:'css',
+    //             name: 'Media Query',
+    //             codeBlock:
+    //             `
+    // //Mobile Break Point
+    // @media screen and (min-width: 568px) {
+        
+    // }
+
+    // //Tablet Break Point
+    // @media screen and (min-width: 834px) {
+        
+    // }
+
+    // //Desktop Break Point
+    // @media screen and (min-width: 1080px) {
+        
+    // }
+    //             `
+    //         },
+    //         {
+    //             id:1,
+    //             language:'javascript',
+    //             name: 'jQuery',
+    //             codeBlock:
+    //             `
+    // //Jquery Hamberger Menu
+    // (function(){
+    //     $(".hamburger").on("click", function(){	
+    //         $('.mobile ul').slideToggle();
+    //         $('.fa-bars').toggle(); 
+    //         $('.fa-xmark').toggle(); 
+    //     });
+    // });
+
+    // //Flickity carousel
+    //             `
+                    
+    //         }
+    //     ]
+    // },
+    {
+        id:3,
         type:'Front-end', 
         title:'HTML Email Template', 
         skills: ['HTML','CSS','Figma'], 
@@ -574,7 +793,7 @@ const projects = [
                 cardTitle:'Style',
                 content:[
                     {
-                        list:'Color',
+                        list:'Colour',
                         listDisc:'Given the brand\'s focus on organic products, the design incorporated a palette of muted and natural colours. '
                     },
                     {
@@ -652,6 +871,7 @@ const projects = [
             }
         ]
     },
+    
     
 ]
 
