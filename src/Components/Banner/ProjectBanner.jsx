@@ -13,7 +13,7 @@ export default function ProjectBanner({ project }){
                                 <div className="py-5">
                                     <ul className="pb-5">
                                         {project.skills && project.skills.map((skill, index) => (
-                                            <li key={index} className='inline-block -text--white font-Manrope text-sm py-1 px-5 mb-3 mr-1 -bg--darkgrey rounded-full md:text-base'>{skill}</li>
+                                            <li key={index} className='inline-block -text--chip--text font-Manrope text-sm py-1 px-5 mb-3 mr-1 -bg--primary rounded-full md:text-base'>{skill}</li>
                                         ))}
                                     </ul>
                                     <a className="button drop-shadow-lg mt-0 lg:mt-6" href={project.demolink} target="new">Live Demo<i className="fa-solid fa-arrow-right ml-2"></i></a>
@@ -25,7 +25,7 @@ export default function ProjectBanner({ project }){
                 <div className="flex flex-col items-center absolute w-20 left-1/2 -translate-x-1/2 bottom-6" >
                     <p className="body--gray mb-3">Scroll</p>
                     <svg className="arrow-down" width="50" height="14" viewBox="0 0 31 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path className="-stroke--darkgrey" d="M1 1L15.1375 12L30 1" strokeWidth="2"/>
+                        <path className="-stroke--primary" d="M1 1L15.1375 12L30 1" strokeWidth="2"/>
                     </svg>
                 </div>
              </section>

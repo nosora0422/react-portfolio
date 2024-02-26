@@ -33,11 +33,11 @@ const projects = [
                 content:[
                     {
                         list:'Search',
-                        listDisc:'The user can create mutiple To do list and mark indevidual itmes as compledted1.'
+                        listDisc:'The user can effortlessly search for items by entering either titles or content.'
                     },
                     {
                         list:'Sort and Filter',
-                        listDisc:'The user can create mutiple To do list and mark indevidual itmes as compledted2.'
+                        listDisc:'The sort and filter features enable the users to organize notes efficiently.'
                     },
                     {
                         list:'Sign up and Login',
@@ -90,7 +90,7 @@ const projects = [
             return(
                 <button
                     key={item}
-                    className={(currentState === item) ? 'px-4 py-1 mr-2 border border-solid -border--tertiary rounded-full -bg--tertiary -text--on-primary' : 'px-4 py-1 mr-2 border border-solid rounded-full -bg--white -text--outline'}
+                    className={(currentState === item) ? 'px-4 py-1 mr-2 border border-solid -border--tertiary rounded-full -bg--tertiary -text--on-primary' : 'px-4 py-1 mr-2 border border-solid rounded-full -bg--secondary -text--outline'}
                     onClick={ ()=>{ callBackState(item) }}
                 >{item}</button>
             );
@@ -257,6 +257,251 @@ const projects = [
     {
         id:2,
         type:'Front-end', 
+        title:'React Portfoilo Website',
+        skills: ['React.js','Tailwind','Figma', 'Spline'], 
+        description:'The goal of this portfolio is to create a single-page website using React.js that showcases myself as a front-end developer and introduces my projects.',
+        img: '../Assets/Images/thumbnail-react-portfolio.jpg',
+        demolink:'https://sarahnoh.ca',
+        overview: (
+            <div>
+                <p>The portfolio underwent a transformation from HTML, CSS, and JavaScript to React.js in order to streamline development and maintenance processes.</p><br/>
+                <p> Utilizing <span className="font-semibold -text--blue">React's component-based architecture</span>, a separate data file containing an object array was created to facilitate the rendering of repetitive UI elements and pages within a single component. This approach <span className="font-semibold -text--blue">significantly reduced the overall codebase</span> by consolidating redundant code and simplifying content updates.</p><br/> 
+                <p>The transition to React not only <span className="font-semibold -text--blue">enhanced code maintainability</span> but also expedited development cycles, allowing for more <span className="font-semibold -text--blue">efficient management</span> of both data and UI styles'</p>
+            </div>
+        ),
+        keyPoint:[
+            { 
+                id:0,
+                cardTitle:'Component',
+                content:[
+                    {
+                        list:'ProjectDetail',
+                        listDisc:'This component efficiently handles the rendering of detailed project information fetched from the data file.'
+                    },
+                    {
+                        list:'Card',
+                        listDisc:'The Card component\'s "columns" prop offers flexibility in layout design by allowing easy adjustment switch between different column configurations, such as 6 columns or 4 columns.'
+                    },
+                    {
+                        list:'Button',
+                        listDisc:'Integrating the Button component with customizable text and colour props enhances development efficiency and consistency across multiple pages.'
+                    },
+                ]
+            },
+            { 
+                id:1,
+                cardTitle:'Library & Plugin',
+                content:[
+                    {
+                        list:'Spline',
+                        listDisc:'Implemented Spline to effortlessly create 3D elements, seamlessly integrating them into the website with minimal code.'
+                    },
+                    {
+                        list:'Framer Motion',
+                        listDisc:'Framer Motion enhanced the user experience with an array of animations, from sliding navigation bars to fading-in cards.'
+                    },
+                    {
+                        list:'Tailwind CSS',
+                        listDisc:'Utilized Tailwind CSS streamlined styling and consistent design, benefiting from its utility-first approach and extensive pre-built components. '
+                    }
+                ]
+            },
+            { 
+                id:3,
+                cardTitle:'Data Rendering',
+                content:[
+                    {
+                        list:'useParam()',
+                        listDisc:'The useParam() was used to retrieve id parameters from the URL, enhancing dynamic routing within project components.'
+                    },
+                    {
+                        list:'Object-oriented array',
+                        listDisc:'Most content is rendered from an object-oriented array structure for efficient data organization and manipulation, ensuring scalability and maintainability.'
+                    },
+                    {
+                        list:'Array methods',
+                        listDisc:'JavaScript array methods such as parseInt, map, and filter were used to optimize data processing and extraction, enhancing performance and functionality.'
+                    },
+                ]
+            },
+            // { 
+            //     id:4,
+            //     cardTitle:'SEO',
+            //     content:[
+            //         {
+            //             list:'createContext()',
+            //             listDisc:'createContext() and Provider facilitated the sharing of global search terms among components.'
+            //         },
+            //         {
+            //             list:'useEffect()',
+            //             listDisc:'useEffect() ensured requests were made selectively, triggered by changes in dependencies like page size.'
+            //         },
+            //         {
+            //             list:'map() & object arrays',
+            //             listDisc:'Utilizing map() with object arrays allowed for the dynamic generation of components, optimizing for efficient updates and revisions.'
+            //         },
+            //     ]
+            // },
+        ],
+        code:[
+            {
+                id:0,               
+                language:'javascript',
+                name:'Project Component',
+                codeBlock:
+    `
+    export default function Project(){
+        const navigate = useNavigate();
+    
+        const handleCardClick = (id) => {
+            navigate(\`\${process.env.PUBLIC_URL}/project-details/\${id}\`);
+        };
+    
+        const { id } = useParams();
+        const currProject = Projects.find(project => project.id === parseInt(id));
+    
+        const projectItems = Projects.filter((project) => project.id !== parseInt(id)).map(item => {
+            return <Card
+                        key={item.id} 
+                        type={item.type} 
+                        title={item.title} 
+                        description={item.description} 
+                        path={item.img}
+                        column={'lg:col-span-4'}
+                        skills={item.skills}
+                        onClick={( )=> handleCardClick(item.id)} 
+                    />
+        })
+    
+        return(
+            <>
+                <div className="relative -bg--body--backgroundColor">
+                    <ProjectBanner 
+                        project={currProject}
+                    />
+                    <ProjectDetail project={currProject} />
+                </div>
+                <section className="my-grid max-w-[1200px] mx-auto pb-20 md:pb-40 md:pt-20 px-6">
+                <div className="col-span-12">
+                    <h3>MORE PROJECTS<span className="point-dot"></span></h3>
+                    <div className="my-grid gap-y-10 my-10 lg:gap-10">
+                        {projectItems}
+                    </div>
+                </div>
+                </section>
+            </>
+        )
+    }   
+    `
+                    
+            },
+            {
+                id:1,
+                language: 'javascript',
+                name:'Framer Motion',
+                codeBlock:
+    `
+    export default function RecomCard() {
+        const ref = useRef(null);
+        const isInView = useInView(ref, { 
+            once: true,
+            threshold:0.8,
+        });
+    
+        const recommendations = RecommendationData.map((item, index) => {
+                return (
+                <motion.div
+                    className={\`col-span-7 flex flex-col justify-between w-full h-full \${item.column} \${item.row} -bg--primary p-6 mr-5 rounded-2xl backdrop-blur-sm drop-shadow-lg\`} 
+                    key={index}
+                    initial={{ 
+                        opacity:0, 
+                        translateX:-40, 
+                        translateY: -40 
+                    }}
+                    animate={ isInView ? { 
+                        opacity: 1, 
+                        translateX: 0, 
+                        translateY: 0 
+                    } : { 
+                        opacity: 0, 
+                        translateX: -20, 
+                        translateY: -20 
+                    }}
+                    transition={{ 
+                        duration: 0.8, 
+                        delay: 0.3 * index, 
+                        ease: 'easeIn' 
+                    }}      
+                >
+                    <div className="">
+                        <p><i className="fa-solid fa-quote-left mb-3 text-white"></i></p>
+                        <p className="text-white text-base font-light">{item.comment}</p>
+                        <i className="fa-solid fa-quote-right block text-right mt-3 text-white"></i>
+                    </div>
+                    <div className="flex justify-between items-end">
+                        <div>
+                            <p className="font-Manrope text-xl lg:text-2xl font-medium  text-white">{item.name}</p>
+                            <div className='flex items-center'>
+                                <p className="text-base mr-2 text-white">{item.title}</p>
+                                <a href={item.linkedin} target="new"><i className="fa-brands fa-linkedin text-white cursor-pointer"></i></a>
+                            </div>
+                        </div>
+                        <img className="object-over object-center rounded-full border border-solid -border--lightgray w-10 h-10" src={item.img} alt={item.name} />
+                    </div>
+                </motion.div>
+            )
+        }
+        )
+    
+      return (
+        <div ref={ref} className='grid grid-cols-7 gap-x-4 gap-y-4 grid-flow-row-dense'>
+            {recommendations}
+        </div>
+      )
+    }
+    `
+            },
+    //         {
+    //             id:2,
+    //             language:'javascript',
+    //             name: 'Dark Mode',
+    //             codeBlock:
+    // ` 
+    // const [favorites, setFavorites] = useState([]);
+    // useEffect(()=>{
+    //     const favoriteMovies = JSON.parse(localStorage.getItem('react-movie-app'));
+    //     if (favoriteMovies) {
+    //         setFavorites(favoriteMovies);
+    //     }
+    // },[]);
+    // //Function to determine movie id and add to favotrite list only a new item in the local storage
+    // const addFavoriteMovie = (movie) =>{
+    //     const isSameItem = favorites.some((favorite) => favorite.id === movie.id)
+        
+    //     if (!isSameItem){
+    //         const newFavoriteMovie = [...favorites, { ...movie, isAddedToList: true }];
+    //         setFavorites(newFavoriteMovie);
+    //         // console.log(newFavoriteMovie);
+    //         saveToLocal(newFavoriteMovie);
+    //         alert('The movie has been successfully added to your list!');
+    //     } else {
+    //        alert('The movie already exists in your list!'); 
+    //     }
+    // }
+    // //Function to remove from favotrite list by filtering items that have different movie id than the selected item.
+    // const removeFavouriteMovie = (movie) =>{
+    //     const newFavoriteMovie = favorites.filter((favorite)=>favorite.id !== movie.id);
+    //     setFavorites(newFavoriteMovie);
+    //     saveToLocal(newFavoriteMovie);
+    //     // console.log(newFavoriteMovie);
+    // };
+    // `              
+    //         }
+        ]
+    },
+    {
+        id:3,
+        type:'Front-end', 
         title:'React Movie Search App',
         skills: ['React.js','CSS','API', 'JSON'], 
         description:'The project aims to develop a TMDB movie application using the TMDB API, enabling users to access movie information efficiently. It includes features like saving favourite movies locally and sharing lists on social media.',
@@ -323,7 +568,7 @@ const projects = [
                         listDisc:'useEffect() ensured requests were made selectively, triggered by changes in dependencies like page size.'
                     },
                     {
-                        list:'map() & objext arrays',
+                        list:'map() & object arrays',
                         listDisc:'Utilizing map() with object arrays allowed for the dynamic generation of components, optimizing for efficient updates and revisions.'
                     },
                 ]
@@ -759,7 +1004,7 @@ const projects = [
     //     ]
     // },
     {
-        id:3,
+        id:4,
         type:'Front-end', 
         title:'HTML Email Template', 
         skills: ['HTML','CSS','Figma'], 

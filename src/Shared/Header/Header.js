@@ -46,7 +46,7 @@ export default function Header(){
         <header>
             <nav className="w-full hidden lg:block lg:px-6">
                 <div className="max-w-[1600px] mx-auto flex justify-between items-center">
-                    <div className="w-28 h-full -bg--body--backgroundColor py-2 px-4 rounded-full">
+                    <div className="w-28 h-full -bg--background py-2 px-4 rounded-full">
                         <Link to="/">
                             <img src={logo} className="w-full" alt="logo-img" />
                         </Link>
@@ -54,14 +54,14 @@ export default function Header(){
                     <div className="rounded-full -bg--nav--darkgray backdrop-blur-sm border border-solid 1px -border--lightgray">
                         <ul className="p-0.5 flex items-center gap-3">
                             <motion.li 
-                                className="absolute w-38 -z-10 py-3 pl-8 pr-6 text-center font-Josefin rounded-full text-sm leading-none text-transparent -bg--nav--darkgray"
+                                className="absolute w-38 -z-10 py-3 pl-8 pr-6 text-center font-Josefin rounded-full text-sm leading-none text-transparent -bg--nav--active"
                                 {...animateMenu(cRoute.pathname)}
                             >Home
                             </motion.li>
                             <li className="inline-block w-38">
                                 <Link 
                                     to="/" 
-                                    className='py-3 pl-8 pr-6 text-center font-Josefin rounded-full text-sm leading-none -text--white'
+                                    className='py-3 pl-8 pr-6 text-center font-Josefin rounded-full text-sm leading-none -text--onDark'
                                     >
                                     HOME
                                     <span className={(cRoute.pathname === '/' || cRoute.pathname === '/home') ? "point-dot" : "point-dot -bg--lightgray"}></span>
@@ -70,7 +70,7 @@ export default function Header(){
                             <li className="inline-block w-38">
                                 <Link 
                                     to="/about" 
-                                    className='py-3 pl-8 pr-6 text-center font-Josefin rounded-full text-sm leading-none -text--white '
+                                    className='py-3 pl-8 pr-6 text-center font-Josefin rounded-full text-sm leading-none -text--onDark '
                                     >
                                     ABOUT
                                     <span className={(cRoute.pathname === '/about') ? "point-dot -bg--yellow" : "point-dot -bg--lightgray"}></span>
@@ -79,7 +79,7 @@ export default function Header(){
                             <li className="inline-block w-38">
                                 <Link 
                                     to="/projects" 
-                                    className='py-3 px-8 text-center font-Josefin rounded-full text-sm leading-none -text--white'>
+                                    className='py-3 px-8 text-center font-Josefin rounded-full text-sm leading-none -text--onDark'>
                                     PROJECTS
                                     <span className={
                                         (
@@ -106,7 +106,7 @@ export default function Header(){
                             onClick={handleToggle}
                         >
                             <i className={ 
-                                headerIcon ? "fa-solid fa-xmark fa-lg -text--white" : "fa-solid fa-bars fa-lg -text--white"
+                                headerIcon ? "fa-solid fa-xmark fa-lg -text--onDark" : "fa-solid fa-bars fa-lg -text--onDark"
                             }>                           
                             </i>
                         </button>
@@ -115,7 +115,7 @@ export default function Header(){
                         <li>
                             <Link 
                                 to="/" 
-                                className={(cRoute.pathname === '/' || cRoute.pathname === '/home') ? 'py-4 px-6 text-right font-Josefin rounded-full text-lg leading-none -text--white -bg--nav--darkgray my-3' :'font-Josefin text-right text-lg leading-none -text--white py-4 px-4 my-3'}
+                                className={(cRoute.pathname === '/' || cRoute.pathname === '/home') ? 'py-4 px-6 text-right font-Josefin rounded-full text-lg leading-none -text--onDark -bg--nav--darkgray my-3' :'font-Josefin text-right text-lg leading-none -text--onDark py-4 px-4 my-3'}
                                 onClick={handleToggle}
                             >
                             HOME
@@ -125,7 +125,7 @@ export default function Header(){
                         <li>
                             <Link 
                                 to="/about" 
-                                className={(cRoute.pathname === '/about') ? 'py-4 px-6 text-right font-Josefin rounded-full text-lg leading-none -text--white -bg--nav--darkgray my-3' :'font-Josefin text-right text-lg leading-none -text--white py-4 px-4 my-3'}
+                                className={(cRoute.pathname === '/about') ? 'py-4 px-6 text-right font-Josefin rounded-full text-lg leading-none -text--onDark -bg--nav--darkgray my-3' :'font-Josefin text-right text-lg leading-none -text--onDark py-4 px-4 my-3'}
                                 onClick={handleToggle}
                             >
                             ABOUT
@@ -143,7 +143,7 @@ export default function Header(){
                                         cRoute.pathname ==='/project-details/2'||
                                         cRoute.pathname ==='/project-details/3'
                                     ) 
-                                    ? 'py-4 px-6 text-right font-Josefin rounded-full text-lg leading-none -text--white -bg--nav--darkgray my-3' :'font-Josefin text-right text-lg leading-none -text--white py-4 px-4 my-3'}
+                                    ? 'py-4 px-6 text-right font-Josefin rounded-full text-lg leading-none -text--onDark -bg--nav--darkgray my-3' :'font-Josefin text-right text-lg leading-none -text--onDark py-4 px-4 my-3'}
                                 onClick={handleToggle}    
                             >
                             PROJECTS

@@ -5,17 +5,26 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        '--darkgrey':'#383838',
-        '--lightgray':'#9e9e9e',
-        '--white':'rgb(247, 247, 247)',
-        '--blue':'#346DFF',
-        '--yellow':'#FFCD4B',
-        '--blackShadow':'#c6c6c6',
-        '--body--backgroundColor':'#fcfcfc',
-        '--nav--darkgray': 'rgba(72,71,71,0.5)',
-        '--gradient-dark': 'rgba(33,33,33,1)',
-        '--gradient-light': 'rgba(56,56,56,1)',
-        '--dark--container': '#555555'
+        '--primary':'rgba(var(--primary))',
+        '--lightgray':'rgba(var(--lightgray))',
+        '--secondary':'rgba(var(--secondary))',
+        '--blue':'rgba(var(--blue))',
+        '--yellow':'rgba(var(--yellow))',
+        '--blackShadow':'rgba(var(--blackShadow))',
+        '--body--backgroundColor':'rgba(var(--body--backgroundColor))',
+        '--nav--darkgray': 'rgba(var(--nav--darkgray))',
+        '--gradient-dark': 'rgba(var(--gradient-dark))',
+        '--gradient-light': 'rgba(var(--gradient-light))',
+        '--dark--container': 'rgba(var(--dark--container))',
+        '--darkMode-text': 'rgba(var(--darkMode-text))',
+        '--contact-backgroundColor': 'rgba(var(--contact-backgroundColor))',
+        '--card-background': 'rgba(var(--card-background))',
+        '--chip--text': 'rgba(var(--chip--text))',
+        '--grey': '#383838',
+        '--background': 'rgb(252, 252, 252)',
+        '--onDark': 'rgb(233, 233, 233)',
+        '--outline': 'rgba(var(--outline))',
+        '--nav--active': 'rgba(var(--nav--active))',
       },
       fontFamily: {
         Josefin: ['"Josefin Sans"', ...defaultTheme.fontFamily.sans],
@@ -64,8 +73,11 @@ module.exports = {
       },
       zIndex: {
         '1': '1',
-      }
+      },
+      
   },
   plugins: [],
+  darkMode: 'class',
+
 }
 }

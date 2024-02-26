@@ -17,7 +17,7 @@ export default function Banner(props){
             </div>
             <div className="px-6 absolute">
                 <div className="max-w-1200 flex flex-col items-start z-10">
-                    <div className="w-full -text--darkgrey font-Josefin pb-4">
+                    <div className="w-full -text--primary font-Josefin pb-4">
                         <div className="flex items-baseline">
                             <h1>{props.h1}</h1>
                             <img 
@@ -62,7 +62,7 @@ export default function Banner(props){
             <div className="flex flex-col items-center absolute w-20 left-1/2 -translate-x-1/2 bottom-6" >
                 <p className="body--gray mb-3">Scroll</p>
                 <svg className="arrow-down" width="50" height="14" viewBox="0 0 31 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path className="-stroke--darkgrey" d="M1 1L15.1375 12L30 1" strokeWidth="2"/>
+                    <path className="-stroke--primary" d="M1 1L15.1375 12L30 1" strokeWidth="2"/>
                 </svg>
             </div>
         </section>

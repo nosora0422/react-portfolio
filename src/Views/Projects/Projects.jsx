@@ -1,11 +1,13 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useOutletContext } from "react-router-dom";
 
 import ProjectBanner from "../../Assets/Spline/ProjectBanner/ProjectBanner";
 import Banner from '../../Components/Banner/Banner';
 import Card from '../../Components/Card/Card';
 import ProjectData from "../../Data/ProjectData";
+import ProjectBannerDark from "../../Assets/Spline/ProjectBanner/ProjectBannerDark";
 
 export default function Projects(){
+    const isDark = useOutletContext();
     const navigate = useNavigate();
 
     const handleCardClick = (id) => {
@@ -27,23 +29,23 @@ export default function Projects(){
     })
     
     return(
-        <>
+        <div className=" -bg--body--backgroundColor">
             <Banner 
                 h1='PROJECTS'
                 h2first='I LEARN FROM'
                 h2second='CHALLENGES'
                 disc="Check out my projects that show what I’m most passionate about!"
                 avatar='project-avatar.png'
-                bannercomp={ProjectBanner}
+                bannercomp={isDark ? ProjectBannerDark : ProjectBanner}
             />
             <section className="my-grid max-w-[1200px] mx-auto py-20 px-6 lg:py-40" id="first-section">
                 <div className="col-span-12 home-project-wrapper">
                     <div className="pb-12">
                         <div className="flex flex-col">
                             <div className="flex flex-wrap gap-2 mb-4">
-                                <p className="text-base font-bold font-Josefin -text--darkgrey md:text-lg lg:text-xl">USEFUL,</p>
-                                <p className="text-base font-bold font-Josefin -text--darkgrey md:text-lg lg:text-xl">REUSABLE,</p>
-                                <p className="text-base font-bold font-Josefin -text--darkgrey md:text-lg lg:text-xl">MAINTAINABLE</p>
+                                <p className="text-base font-bold font-Josefin -text--primary md:text-lg lg:text-xl">USEFUL,</p>
+                                <p className="text-base font-bold font-Josefin -text--primary md:text-lg lg:text-xl">REUSABLE,</p>
+                                <p className="text-base font-bold font-Josefin -text--primary md:text-lg lg:text-xl">MAINTAINABLE</p>
                             </div>
                             <h3>WEB DEVELOPMENT<span className="point-dot"></span></h3>
                         </div>
@@ -54,6 +56,6 @@ export default function Projects(){
                     </div>
                 </div>
             </section>
-        </>
+        </div>
     )
 }

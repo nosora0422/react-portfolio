@@ -15,13 +15,13 @@ export default function Codeblock({project}){
         <>
         { 
             codeList.map(item => (
-                    <div className="col-span-12 bg-white p-6 rounded-2xl md:p-10 shadow-md mb-5" key={item.id}>
+                    <div className="col-span-12 -bg--card-background p-6 rounded-2xl border border-solid -border--outline md:p-10 shadow-md mb-5" key={item.id}>
                         <p className="blue-lable mb-10">{item.name}</p>
                         <div className="text-sm">
                             <SyntaxHighlighter 
-                            language={item.language} 
-                            style={dracula}
-                            customStyle={codeStyle}
+                                language={item.language} 
+                                style={dracula}
+                                customStyle={codeStyle}
                             >
                                 {item.codeBlock}
                             </SyntaxHighlighter>

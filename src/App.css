@@ -3,9 +3,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300;400&display=swap');
 
 :root{
-    --darkgrey:#383838;
+    --primary:#383838;
     --lightgray:#9e9e9e;
-    --white:rgb(247, 247, 247);
+    --secondary:rgb(247, 247, 247);
     --blue:#346DFF;
     --yellow:#FFCD4B;
     --blackShadow:#c6c6c6;
@@ -61,7 +61,7 @@ h2{
 }
 
 h3{
-    color: var(--darkgrey);
+    color: var(--primary);
     margin-bottom: 2rem;
     margin-right: 10px;
     font-size: 1.5rem;
@@ -70,8 +70,8 @@ h3{
     
 }
 
-.h3--white{
-    color: var(--white);
+.h3--secondary{
+    color: var(--secondary);
 }
 .h3--yellow{
     color: var(--yellow);
@@ -79,7 +79,7 @@ h3{
 
 h4{
     padding: 2px 0 20px 0;
-    color: var(--darkgrey);
+    color: var(--primary);
     font-family: var(--body-font-family);
     font-size: 1.3rem;
     font-weight: 700;
@@ -87,13 +87,13 @@ h4{
 }
 
 .h4-white{
-    color: var(--white);
+    color: var(--secondary);
 }
 
 h5{
     font-size: 1.3rem;
     font-family: var(--title-font-family);
-    color: var(--darkgrey);
+    color: var(--primary);
     padding-bottom: 20px;
     font-weight: 600;
 }
@@ -103,25 +103,25 @@ h6{
     padding: 0.2rem 0.8rem;
     font-size: 1.3rem;
     font-family: var(--title-font-family);
-    color: var(--darkgrey);
+    color: var(--primary);
     margin-bottom: 10px;
     font-weight: 600;
     border-radius: 20px;
-    border: 0.3px solid var(--white);
+    border: 0.3px solid var(--secondary);
     
 }
 
-.h5--white{
-    color: var(--white);
+.h5--secondary{
+    color: var(--secondary);
 }
 
-.h6--white{
-    color: var(--white);
+.h6--secondary{
+    color: var(--secondary);
 }
 
-.body--white {
+.body--secondary {
     font-size: var(--body-font-size);
-    color: var(--white);
+    color: var(--secondary);
     font-family: var(--body-font-family);
     font-weight: 300;
     line-height: var(--body-font-line-height);
@@ -130,7 +130,7 @@ h6{
 
 .body--gray {
     font-size: var(--body-font-size);
-    color: var(--darkgrey);
+    color: var(--primary);
     font-family: var(--body-font-family);
     font-weight: 400;
     line-height: var(--body-font-line-height);
@@ -153,11 +153,11 @@ h6{
 }
 
 .button:hover i{
-    color: var(--white);
+    color: var(--secondary);
 }
 
 .button:hover{
-    color: var(--white);
+    color: var(--secondary);
 }
 
 
@@ -169,7 +169,7 @@ h6{
     top: 0;
     left: 0;
     border-radius: 40px;
-    background-color: var(--darkgrey);
+    background-color: var(--primary);
     background-position: center;
     background-size: cover;
     animation: buttonAnim 300ms ease-out;
@@ -178,12 +178,12 @@ h6{
 
 
 .button--blue{
-    color: var(--white);
+    color: var(--secondary);
     background-color: #346DFF;
 }
 
 .button--yellow{
-    color: var(--darkgrey);
+    color: var(--primary);
     background-color: var(--yellow);
 }
 
@@ -200,19 +200,19 @@ h6{
 
 .fa-arrow-right{
     margin-left: 10px;
-    color: var(--white);
+    color: var(--secondary);
 }
 
 .fa-arrow-left{
     margin-right: 10px;
 
 }
-.icon--white{
-    color: var(--white);
+.icon--secondary{
+    color: var(--secondary);
 }
 
 .icon--gray{
-    color:var(--darkgrey)
+    color:var(--primary)
 }
 
 
@@ -228,13 +228,13 @@ h6{
     background-color: var(--yellow);
 }
 
-.point-dot--white{
-    background-color: var(--white);
+.point-dot--secondary{
+    background-color: var(--secondary);
 }
 
 
 .arrow-down{
-    color: var(--darkgrey);
+    color: var(--primary);
     position:absolute;
     transform: translateX(-50%);
     left: 50%;
@@ -244,11 +244,11 @@ h6{
 
 
 .path-white{
-    stroke: var(--white);
+    stroke: var(--secondary);
 }
 
 .path-gray{
-    stroke: var(--darkgrey);
+    stroke: var(--primary);
 }
 
 a{
@@ -360,7 +360,7 @@ nav{
     background-color: rgba(72,71,71,0.5);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    border: 0.3px solid var(--white);
+    border: 0.3px solid var(--secondary);
 }
 
 .d-nav-bar ul{
@@ -439,7 +439,7 @@ nav{
 
 .banner-title{
     width: 100%;
-    color: var(--darkgrey);
+    color: var(--primary);
     font-family: var(--title-font-family);
     padding-bottom: 40px;
 }
@@ -475,7 +475,7 @@ nav{
 
 .m-project-card-item{
     position: relative;
-    background-color: var(--white);
+    background-color: var(--secondary);
     height: auto;
     margin-bottom: 40px;
     border-radius: 16px;
@@ -561,13 +561,13 @@ nav{
 
 .project-skills ul li, .d-project-skills ul li{
     display: inline-block;
-    color: var(--white);
+    color: var(--secondary);
     font-family: var(--body-font-family);
     font-size: 0.9rem;
     padding: 8px 18px;
     margin-bottom: 10px;
     margin-right: 4px;
-    background-color: var(--darkgrey);
+    background-color: var(--primary);
     border-radius: 1rem;
 }
 
@@ -596,7 +596,7 @@ nav{
 
 /*recommendation*/
 .recommendation{
-    background-color: var(--darkgrey);
+    background-color: var(--primary);
     background: linear-gradient(0deg, rgba(33,33,33,1) 20%, rgba(56,56,56,1) 79%);
 }
 
@@ -611,7 +611,7 @@ nav{
     justify-content: space-between;
     width: 18rem;
     height: 28rem;
-    background-color: var(--white);
+    background-color: var(--secondary);
     padding: 28px 28px;
     margin-right: 20px;
     border-radius: 16px;
@@ -661,11 +661,11 @@ nav{
 
 .flickity-page-dots .dot {
     opacity: 1;
-    border: 2px solid var(--white);
+    border: 2px solid var(--secondary);
 }
 
 .flickity-page-dots .dot.is-selected {
-    background: var(--white);
+    background: var(--secondary);
 }
 
 /*recommendation end*/
@@ -740,7 +740,7 @@ nav{
 .copyright{
     margin-top: 20px;
     text-align: center;
-    color: var(--darkgrey);
+    color: var(--primary);
 }
 
 
@@ -789,8 +789,8 @@ nav{
     display: inline-block;
     font-size: 0.9rem;
     font-weight: 500;
-    background-color: var(--darkgrey);
-    color: var(--white);
+    background-color: var(--primary);
+    color: var(--secondary);
     padding: 3px 10px;
     border-radius: 20px;
 }
@@ -835,7 +835,7 @@ nav{
 }
 
 .project-inner-box{
-    background-color: var(--darkgrey);
+    background-color: var(--primary);
     border-radius: 16px;
     padding: 32px 24px;
     margin: 20px 0;
@@ -857,7 +857,7 @@ nav{
 
 .project-step{
     border-radius: 20px;
-    border: 0.5px solid var(--white);
+    border: 0.5px solid var(--secondary);
     padding: 0.2rem 0.8rem;
 }
 
@@ -874,7 +874,7 @@ code{
     font-size: 0.8rem;
     overflow-x: auto;
     font-family: var(--code--font);
-    color: var(--white);
+    color: var(--secondary);
     line-height: 1rem;
     display: block;
     width: 100%;
