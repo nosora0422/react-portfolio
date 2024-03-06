@@ -30,7 +30,7 @@ export default function Contact(){
                     <div className="col-span-12 flex flex-col md:pl-6 md:col-span-6 ">
                         <p className="body--gray">Feel free to reach out to me with any questions about me and my projects! I'm here and ready to collaborate with you on any interesting web development project!</p>
                         <ul className="hidden lg:mt-8 lg:w-full lg:flex lg:items-center" >
-                            <li><a className="-text--chip--text -bg--primary px-4 mr-8 rounded-full" href="mailto:nosora0422@gmail.com">nosora0422@gmail.com</a></li>
+                            <li><a className="-text--chip--text -bg--chip--background y px-4 mr-8 rounded-full" href="mailto:nosora0422@gmail.com">nosora0422@gmail.com</a></li>
                             {contactData.map(({ link, icon, id }) => (
                                 <motion.li 
                                     key={id}
@@ -43,7 +43,7 @@ export default function Contact(){
                                     custom={id}
                                 >
                                     <a href={link} target="new">
-                                        <i className={`${icon} fa-lg mr-8 -text--primary`}></i>
+                                        <i className={`${icon} fa-lg mr-8 -text--primary hover:-text--lightgray`}></i>
                                     </a>
                                 </motion.li>
                             ))}

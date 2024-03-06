@@ -16,7 +16,7 @@ export default function Carousel({ gallery }) {
                     className='w-full box-border'
                 >
                     <p className='blue-lable mb-10'>{item.name}</p>
-                    <div className='flex justify-center items-center rounded-xl box-border p-4'>
+                    <div className='flex justify-center items-center rounded-xl box-border'>
                         <img 
                             src={item.slideImgPath}
                             className='object-cover object-center rounded-xl' 
@@ -29,13 +29,13 @@ export default function Carousel({ gallery }) {
     )
 
   return (
-    <div className='bg-white rounded-2xl pt-6 pb-10 px-6 md:p-10 shadow-md'>
+    <div className='-bg--card-background pt-6 pb-10 rounded-2xl border border-solid -border--outline px-6 md:p-10 shadow-md'>
         <Flickity
-        elementType={'div'} // default 'div'
-        options={flickityOptions} // takes flickity options {}
-        disableImagesLoaded={false} // default false
-        reloadOnUpdate // default false
-        static // default false
+        elementType={'div'} 
+        options={flickityOptions} 
+        disableImagesLoaded={false} 
+        reloadOnUpdate 
+        static 
         >
             {galleryImage}
         </Flickity>

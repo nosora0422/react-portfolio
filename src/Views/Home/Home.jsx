@@ -1,4 +1,5 @@
 import { useNavigate, useOutletContext } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 
 import Banner from '../../Components/Banner/Banner';
 import Button from '../../Components/Button/Button';
@@ -10,8 +11,8 @@ import HomeBannerDark from '../../Assets/Spline/HomeBanner/HomeBannerDark';
 
 
 export default function Home(){
+    
     const isDark = useOutletContext();
-    console.log(isDark);
     const navigate = useNavigate();
 
     const handleCardClick = (id) => {
@@ -34,6 +35,11 @@ export default function Home(){
     // console.log(cLocation);
     return(
         <div>
+            <Helmet>
+                <title>Home - Sora Noh, Creative Front End Developer</title>
+                <meta name="description" content="As a passionate front-end developer, I thrive on challenges, employing code as a solution. Eager to collaborate on web development projects. Explore my portfolio for my impactful web development work!" />
+                <meta name="keywords" content="Front-end Coding Web-development HTML CSS JS FIGMA JavaScript React Featured-project Recommendations Contact" />
+            </Helmet>
             <section>
                 <Banner 
                     h1='SORA NOH'
@@ -55,7 +61,7 @@ export default function Home(){
                             </div>
                             <p className="body--gray max-w-[500px]">I've achieved the project goals by focusing on building useful, reusable, and maintainable code to solve problems. </p>
                         </div>
-                        <div className="my-grid gap-y-10 my- md:my-10 lg:gap-10 ">
+                        <div className="my-grid gap-y-10 my-10 lg:gap-10 ">
                             {projectItems}
                         </div>
                         <Button 
@@ -72,6 +78,10 @@ export default function Home(){
                         <p className="-text--primary max-w-[500px]">These wonderful LinkedIn recommendations come from both colleagues and team members I've collaborated!</p>
                     </div>
                     <RecomCard />
+                    <Button 
+                       text='About me' 
+                       link='/about' 
+                    />
                 </div>
             </section> 
         </div>

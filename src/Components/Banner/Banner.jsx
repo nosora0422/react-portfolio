@@ -22,7 +22,7 @@ export default function Banner(props){
                             <h1>{props.h1}</h1>
                             <img 
                                 className="w-8 md:w-14 ml-4 " 
-                                src={require(`../../Assets/Images/${props.avatar}`)} 
+                                src={`../../Assets/Images/${props.avatar}`} 
                                 alt="iphone-avatar" 
                             />
                         </div>
@@ -48,15 +48,15 @@ export default function Banner(props){
                                         </motion.h2>))
                                 ) : (
                                     <h2>
-                                    <span>{props.h2second}<span className={`point-dot ${props.h1 === 'ABOUT' ? '-bg--yellow' : ''}`}></span></span>
+                                        <span>{props.h2second}<span className={`point-dot ${props.h1 === 'ABOUT' ? '-bg--yellow' : ''}`}></span></span>
                                     </h2>
                                 )}
                         </div>
                     </div>
-                    <div className="body--gray flex flex-col justify-between items-start max-w-100 h-44">
+                   {props.disc && <div className="body--gray flex flex-col justify-between items-start max-w-100 h-44">
                         {props.disc && <p className="max-w-[400px] text-base font-Manrope font-medium md:text-xl md:max-w-[650px] text-pretty">{props.disc}</p>}
                         {props.btn && <Button text={props.btn} link='/about'/>}
-                    </div>
+                    </div>}
                 </div>
             </div>
             <div className="flex flex-col items-center absolute w-20 left-1/2 -translate-x-1/2 bottom-6" >

@@ -19,12 +19,13 @@ module.exports = {
         '--darkMode-text': 'rgba(var(--darkMode-text))',
         '--contact-backgroundColor': 'rgba(var(--contact-backgroundColor))',
         '--card-background': 'rgba(var(--card-background))',
-        '--chip--text': 'rgba(var(--chip--text))',
         '--grey': '#383838',
         '--background': 'rgb(252, 252, 252)',
         '--onDark': 'rgb(233, 233, 233)',
         '--outline': 'rgba(var(--outline))',
         '--nav--active': 'rgba(var(--nav--active))',
+        '--chip--background': 'rgba(var(--chip--background))',
+        '--chip--text': 'rgba(var(--chip--text))', 
       },
       fontFamily: {
         Josefin: ['"Josefin Sans"', ...defaultTheme.fontFamily.sans],
@@ -32,12 +33,17 @@ module.exports = {
       },
       animation: {
         buttonAnim: 'buttonAnim 500ms ease-in',
-        footerAnim: 'background-color 200ms ease-in'
+        footerAnim: 'background-color 200ms ease-in',
+        opacityAnim: 'buttonOpacity 300ms ease-in-out',
       },
       keyframes: {
         buttonAnim: {
           '0%' : {left: '-100%'},
           '100%':{left: '0%'}
+        },
+        buttonOpacity:{
+          '0%' : {opacity: 0},
+          '100%':{opacity: 1},
         }
       },
       margin:{

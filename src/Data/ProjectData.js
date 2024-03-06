@@ -6,20 +6,23 @@ const projects = [
         skills: ['React.js','Tailwind','Firebase'], 
         description:'The project aimed to build a responsive web app for creating notes, images, and to-do lists. The app utilizes local storage and Firebase to store object arrays and user sign-up information.',
         img: '../Assets/Images/thumbnail-note-app.jpg',
+        qr:'../Assets/Images/react-note-qr.jpg',
         demolink:'https://nosora0422.github.io/fullstack-note-app/',
-        overview: 'The objective of this project is to develop a responsive web application capable of creating notes, managing images, and maintaining to-do lists. The app will leverage both local storage and Firebase to store object arrays and user sign-up information.',
+        overview: (
+        <p>The objective of this project was to develop a responsive web application capable of <span className="font-semibold -text--blue">creating notes, managing images, and maintaining to-do lists.</span> The app made it easier to organize notes by separating them into tabs so that users can write various notes according to their purpose and preferences. The app leverages both <span className="font-semibold -text--blue">local storage and Firebase to store object arrays</span> and user sign-up information. </p>
+        ),
         keyPoint:[
             { 
                 id:0,
                 cardTitle:'Function',
                 content:[
                     {
-                        list:'To Do List',
-                        listDisc:'The user can create mutiple To do list and mark indevidual itmes as compledted.'
+                        list:'To-Do List',
+                        listDisc:'Users can create multiple To-do lists mark individual list items as completed and check progress.'
                     },
                     {
                         list:'Note',
-                        listDisc:'Include features such as rich text formatting, categorization, and sorting for enhanced note management.'
+                        listDisc:'The app includes features such as rich text formatting, categorization, and sorting for enhanced note management.'
                     },
                     {
                         list:'Image Note',
@@ -33,7 +36,7 @@ const projects = [
                 content:[
                     {
                         list:'Search',
-                        listDisc:'The user can effortlessly search for items by entering either titles or content.'
+                        listDisc:'Users can effortlessly search for items by entering either titles or content.'
                     },
                     {
                         list:'Sort and Filter',
@@ -51,11 +54,11 @@ const projects = [
                 content:[
                     {
                         list:'Local Storage',
-                        listDisc:'Seamlessly access your notes, images, and to-do lists across sessions with local storage.'
+                        listDisc:'The app seamlessly access notes, images, and to-do lists across sessions with local storage.'
                     },
                     {
                         list:'Firebase',
-                        listDisc:'Securely sign up and log in with Firebase Authentication.'
+                        listDisc:'Users securely sign up and log in with Firebase Authentication.'
                     },
                 ]
             },
@@ -78,102 +81,323 @@ const projects = [
                 ]
             },
         ],
+        slideImg:[
+            {
+                name: 'Signup & Login',
+                slideImgPath:'../../Assets/Images/react-note-firebase.png'
+            },
+            {
+                name: 'To-do-list',
+                slideImgPath:'../../Assets/Images/react-note-screen.png'
+            },
+            {
+                name: 'Responsive Design',
+                slideImgPath:'../../Assets/Images/react-note-mobile.png'
+            },
+        ], 
         code:[
             {
                 id:0,               
                 language:'javascript',
-                name:'Button Component',
+                name:'Signup',
+                img:'../Assets/Images/react-note-signup.jpg',
                 codeBlock:
-    `
-    export default function ButtonGroup({validList, currentState, callBackState}){
-        const drawGroup = (item) => {
-            return(
-                <button
-                    key={item}
-                    className={(currentState === item) ? 'px-4 py-1 mr-2 border border-solid -border--tertiary rounded-full -bg--tertiary -text--on-primary' : 'px-4 py-1 mr-2 border border-solid rounded-full -bg--secondary -text--outline'}
-                    onClick={ ()=>{ callBackState(item) }}
-                >{item}</button>
-            );
+`
+export default function Signup(){
+    const [registerEmail, setRegisterEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [registerPassword, setRegisterPassword] = useState("");
+    const [registerName, setRegisterName] = useState("");
+    const [error, setError] = useState("");
+
+    const register = async () => {
+        if (password !== registerPassword) {
+            setError("Passwords do not match");
+            return;
         }
-    
-        return(
-            <>
-                {validList.map(drawGroup)}
-            </>
-        )
-    }
-    `
+        try {
+            const userCredential = await createUserWithEmailAndPassword(auth, registerEmail, registerPassword);
+            const user = userCredential.user;
+            // Update user profile with the name
+            await updateProfile(user, { displayName: registerName });
+            navigate('/');
+            
+            // console.log(user);
+        } catch(error){
+            setError(error.message);
+            // console.log(error.message);
+        }
+    };
+
+    return(
+        <div className="pt-4 flex flex-col">
+                        <label htmlFor='name'>Name</label>
+                        <input 
+                            className="border border-solid -border--outline rounded py-2 px-3" 
+                            name="name"
+                            type="text"
+                            onChange={(event) => {
+                                setRegisterName(event.target.value)
+                            }} 
+                            placeholder="Your Name" 
+                        />
+                    </div>
+                    <div className='pt-4 flex flex-col'>
+                        <label htmlFor='email'>Email</label>
+                        <input 
+                            className="border border-solid -border--outline rounded py-2 px-3" 
+                            name="email"
+                            type='email'
+                            onChange={(event) => {
+                                setRegisterEmail(event.target.value)
+                            }} 
+                            placeholder='youremail@example.com' 
+                        />
+                        {error.email && <p className='text-xs text-red-400'>{error.email}</p>}
+                    </div>
+                    <div className='pt-4 flex flex-col'>
+                        <label htmlFor='password'>Password</label>
+                        <input 
+                            className="border border-solid -border--outline rounded py-2 px-3" 
+                            name="password"
+                            type='text'
+                            onChange={(event) => {
+                                setPassword(event.target.value)
+                            }} 
+                            placeholder='Your password' 
+                        />
+                        {error.password && <p className='text-xs text-red-400'>{error.password}</p>}
+                    </div>
+                    <div className='py-4 flex flex-col'>
+                        <label htmlFor='password'>Confirm Password</label>
+                        <input 
+                            className="border border-solid -border--outline rounded py-2 px-3" 
+                            name="passwordConfirm"
+                            type='text'
+                            onChange={(event) => {
+                                    setRegisterPassword(event.target.value)
+                            }}
+                            placeholder='Confirm your password' 
+                        />
+                        {error && <p className='text-xs text-red-400'>{error}</p>}
+                    </div>
+                    <button
+                        className='button w-full mt-4 -bg--primary -text--on-primary rounded'
+                        onClick={register}
+                    >
+                        Sign up
+                    </button>
+    )
+}
+`
                     
             },
             {
                 id:1,
                 language: 'javascript',
-                name:'Button State',
+                name:'Login',
+                img:'../Assets/Images/react-note-login.jpg',
                 codeBlock:
-    `
-    export default function ToDoItems({ entries, delRef }){
-        const [currFilter, setCurrFilter] = useState('all');
-        const filterList = ['all', 'school', 'work', 'personal'];
+`
+export default function Login(){
+    const [loginEmail, setLoginEmail] = useState("");
+    const [loginPassword, setLoginPassword] = useState("");
+    const [error, setError] = useState("");
+    const navigate = useNavigate();
     
-        const [currSort, setCurrSort] = useState('Date');
-        const sortList = ['date', 'text'];
-    
-        const fEntries = sortAndFilterList(entries, currFilter, currSort);
-    
-        return(
-            <div>
-                <div className="flex justify-end flex-wrap px-2 py-4">
-                    <div className="mb-2">
-                        <ButtonGroup 
-                            validList={filterList} 
-                            currentState={currFilter}
-                            callBackState={setCurrFilter}
-                        />
-                    </div>
-                    <div className="mb-2">
-                        <ButtonGroup 
-                            validList={sortList} 
-                            currentState={currSort}
-                            callBackState={setCurrSort}
-                        />
-                    </div>
-                </div>
-                <ul className="my-grid">
-                    {
-                        fEntries.length > 0 ? 
-                        fEntries.map((item) => (<Task key={item.id} item={item} delRef={delRef} />)) : 
-                        <li className="col-span-12 w-full py-4 px-6 rounded-md -bg--surface-bright">No items to display</li>
-                    }
-                </ul>
+    const login = async () => {
+        try {
+            const user = await signInWithEmailAndPassword(auth, loginEmail, loginPassword);
+            navigate('/app');        
+            console.log(user);
+        } catch(error){
+            setError(error.message);
+            console.log(error.message);
+        }
+    };
+
+    return(
+        <div>
+            <div className='flex flex-col h-20 h-'>
+                <label htmlFor='email'>Email</label>
+                <input 
+                    className="border border-solid -border--outline rounded py-2 px-3"
+                    name='email' 
+                    type='email'
+                    onChange={(event)=>{setLoginEmail(event.target.value)}} 
+                    placeholder='youremail@example.com' 
+                />
+                {error&& <p className='text-xs text-red-400'>{error}</p> }
             </div>
-    
-        );
-    }`
+            <div className='pt-4 flex flex-col h-20'>
+                <label htmlFor='password'>Password</label>
+                <input 
+                    className="border border-solid -border--outline rounded py-2 px-3" 
+                    name='password'
+                    type='password'
+                    onChange={(event)=>{setLoginPassword(event.target.value)}} 
+                    placeholder='Your password' 
+                />
+                {error && <p className='text-xs text-red-400'>{error}</p> }
+            </div>
+            <button 
+                className='button w-full mt-8 -bg--primary -text--on-primary rounded'
+                onClick={login}
+            >
+                Log in
+            </button>
+        </div>
+    )
+    }
+}`
             },
             {
                 id:2,
                 language:'javascript',
-                name: 'react-router-dom',
+                name: 'React-router-dom',
+                img:'../Assets/Images/react-note-dom.jpg',
                 codeBlock:
-    ` 
-    const root = ReactDOM.createRoot(document.getElementById('root'));
-    root.render(
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Login />}>
-              <Route index element={<Login />} />
-            </Route>
-            <Route path="/signup" element={<Signup />} />
-            <Route path="app" element={<App />}>
-              <Route index element={<ToDoList />} />
-              <Route path="to-do-list" element={<ToDoList />} />
-              <Route path="note" element={<Note />} />
-              <Route path="image" element={<Images />} />
-            </Route>
-          </Routes>
-        </BrowserRouter>
-      );
-    `              
+` 
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+    <BrowserRouter>
+        <Routes>
+        <Route path="/" element={<Login />}>
+            <Route index element={<Login />} />
+        </Route>
+        <Route path="/signup" element={<Signup />} />
+        <Route path="app" element={<App />}>
+            <Route index element={<ToDoList />} />
+            <Route path="to-do-list" element={<ToDoList />} />
+            <Route path="note" element={<Note />} />
+            <Route path="image" element={<Images />} />
+        </Route>
+        </Routes>
+    </BrowserRouter>
+    );
+`              
+            },
+            {
+                id:3,
+                language:'javascript',
+                name: 'To-do list',
+                codeBlock:
+` 
+export default function List({ searchTerm }){
+    .
+    .
+    .
+    const handleTaskChange = (index, value) => {
+        const updatedTasks = [...taskValues];
+        updatedTasks[index] = value;
+        setTaskValues(updatedTasks);
+    };
+
+    //Add additioanl input box and set empty value to the task array
+    const addTaskInput = () => {
+        setTaskValues([...taskValues, '']);
+    };
+
+    //Remove input box and entered data from task array 
+    const removeTaskInput = (index) => {
+        const updatedTasks = taskValues.filter((_, i) => i !== index);
+        setTaskValues(updatedTasks);
+    };
+
+    const addItem = () => {
+        if (titleVal !== ""){
+            // create task array with own ids
+            const tasksArray = taskValues.map((taskText) => ({
+                id: uuidv4(),
+                task: taskText,
+            }));
+
+            const newItem = {
+                id: uuidv4(),
+                title: titleVal,
+                tasks: tasksArray,
+                category: categoryVal,
+                date: Date.now()
+            };
+
+            setItems([...items, newItem]);
+
+            // reset input valuse after adding to the local storage
+            setTitleVal('');
+            setTaskValues(['']);
+        }
+    }
+
+    const deleteItem = (key) =>{
+        let filteredItems = items.filter((item)=>{return (item.id !== key);
+        });
+
+        setItems(filteredItems);
+    }
+    .
+    .
+    .
+
+    return(
+        .
+        .
+        .
+
+        <div className="flex flex-col gap-2">
+            <select
+                className="w-full py-2 px-4 border-none rounded-sm focus: outline-0"
+                value={categoryVal}
+                onChange={event => {
+                    setCategoryVal(event.target.value)
+                }}
+            >
+                <option value="personal">Personal</option>
+                <option value="school">School</option>
+                <option value="work">Work</option>
+            </select>
+            <div className="flex items-center bg-white rounded-sm">
+                <input
+                    className="w-full mx-2 py-2 px-2 border-none focus: outline-0"
+                    value={titleVal}
+                    onChange={(event) => {
+                        setTitleVal(event.target.value);
+                    }}
+                    placeholder="Enter Title">
+                </input>
+            </div>
+            {taskValues.map((task, index) => (
+                <div className="flex items-center bg-white rounded-sm" key={index}>
+                    <FontAwesomeIcon icon={regularSquare} className="ml-4 -text--secondary"/>
+                    <input
+                        className="w-full mx-2 py-2 px-2 border-none focus: outline-0"
+                        value={task}
+                        onChange={(event) => handleTaskChange(index, event.target.value)}
+                        placeholder="Enter Task"
+                    />
+                    {index > 0 && (
+                        <button 
+                            className="p-2 border-0 bg-transparent cursor-pointer" 
+                            onClick={() => removeTaskInput(index)}
+                        ><FontAwesomeIcon icon={faTrashCan} />
+                        </button>
+                    )}
+                </div>
+            ))}
+            <button 
+                type="submit"
+                className="button rounded-sm mt-2 -bg--surface-container-highest -text--on-primary-container"
+                onClick={addTaskInput}
+            >
+            <FontAwesomeIcon icon={faPlus} /> Add Task
+            </button>
+        </div>
+    )
+    .
+    .
+    .
+
+}
+`              
             }
         ]
     },
@@ -184,8 +408,11 @@ const projects = [
         skills: ['Figma','Webflow','Agile'], 
         description:'The objective of the project was to develop a business website designed to present counselling services and facilitate inquiries by utilizing a contact form.',
         img: '../Assets/Images/project4-thumbnail.jpg',
+        qr:'../Assets/Images/webflow-qr.jpg',
         demolink:'https://vanhcc.com',
-        overview:"A client needed a business website constructed using Webflow, emphasizing creating a welcoming and inviting colour theme, while streamlining the inquiry process through a contact form. Given the tight deadline and skill sets at hand, the Agile Scrum methodology was employed, fostering efficient communication with both the client and team members.",
+        overview:(
+            <p>A client needed a business website constructed using Webflow, emphasizing creating a <span className="font-semibold -text--blue">welcoming and inviting colour theme</span>, while streamlining the inquiry process through <span className="font-semibold -text--blue">a contact form.</span> Given the tight deadline and skill sets at hand, the <span className="font-semibold -text--blue">Agile Scrum</span> methodology was employed, fostering efficient communication with both the client and team members.</p>
+            ),
         keyPoint:[
             { 
                 id:0,
@@ -259,8 +486,9 @@ const projects = [
         type:'Front-end', 
         title:'React Portfoilo Website',
         skills: ['React.js','Tailwind','Figma', 'Spline'], 
-        description:'The goal of this portfolio is to create a single-page website using React.js that showcases myself as a front-end developer and introduces my projects.',
+        description:'The goal of this portfolio was to create a single-page website using React.js that showcases myself as a front-end developer and introduces my projects.',
         img: '../Assets/Images/thumbnail-react-portfolio.jpg',
+        qr:'../Assets/Images/react-portfolio-qr.jpg',
         demolink:'https://sarahnoh.ca',
         overview: (
             <div>
@@ -324,30 +552,22 @@ const projects = [
                     },
                 ]
             },
-            // { 
-            //     id:4,
-            //     cardTitle:'SEO',
-            //     content:[
-            //         {
-            //             list:'createContext()',
-            //             listDisc:'createContext() and Provider facilitated the sharing of global search terms among components.'
-            //         },
-            //         {
-            //             list:'useEffect()',
-            //             listDisc:'useEffect() ensured requests were made selectively, triggered by changes in dependencies like page size.'
-            //         },
-            //         {
-            //             list:'map() & object arrays',
-            //             listDisc:'Utilizing map() with object arrays allowed for the dynamic generation of components, optimizing for efficient updates and revisions.'
-            //         },
-            //     ]
-            // },
         ],
+        slideImg:[
+            {
+                name: 'Dark Theme',
+                slideImgPath:'../../Assets/Images/react-portfolio-dark.png'
+            },
+            {
+                name: 'Object Array',
+                slideImgPath:'../../Assets/Images/react-portfolio-object.png'
+            },
+        ], 
         code:[
             {
                 id:0,               
                 language:'javascript',
-                name:'Project Component',
+                name:'useParams()',
                 codeBlock:
     `
     export default function Project(){
@@ -461,42 +681,83 @@ const projects = [
     }
     `
             },
-    //         {
-    //             id:2,
-    //             language:'javascript',
-    //             name: 'Dark Mode',
-    //             codeBlock:
-    // ` 
-    // const [favorites, setFavorites] = useState([]);
-    // useEffect(()=>{
-    //     const favoriteMovies = JSON.parse(localStorage.getItem('react-movie-app'));
-    //     if (favoriteMovies) {
-    //         setFavorites(favoriteMovies);
-    //     }
-    // },[]);
-    // //Function to determine movie id and add to favotrite list only a new item in the local storage
-    // const addFavoriteMovie = (movie) =>{
-    //     const isSameItem = favorites.some((favorite) => favorite.id === movie.id)
-        
-    //     if (!isSameItem){
-    //         const newFavoriteMovie = [...favorites, { ...movie, isAddedToList: true }];
-    //         setFavorites(newFavoriteMovie);
-    //         // console.log(newFavoriteMovie);
-    //         saveToLocal(newFavoriteMovie);
-    //         alert('The movie has been successfully added to your list!');
-    //     } else {
-    //        alert('The movie already exists in your list!'); 
-    //     }
-    // }
-    // //Function to remove from favotrite list by filtering items that have different movie id than the selected item.
-    // const removeFavouriteMovie = (movie) =>{
-    //     const newFavoriteMovie = favorites.filter((favorite)=>favorite.id !== movie.id);
-    //     setFavorites(newFavoriteMovie);
-    //     saveToLocal(newFavoriteMovie);
-    //     // console.log(newFavoriteMovie);
-    // };
-    // `              
-    //         }
+            {
+                id:2,
+                language:'javascript',
+                name: 'Dark Mode',
+                codeBlock:
+    ` 
+    //Tailwind input.css
+    *{
+        @apply transition-colors duration-200;
+    }
+    
+    .light{
+        --primary: 56,56,56;
+        --lightgray: 158,158,158;
+        --secondary: 247, 247, 247;
+        --blue: 52, 109, 255;
+        --yellow: 255, 205, 75;
+        --blackShadow: 198, 198, 198;
+        --body--backgroundColor: 252, 252, 252;
+        --nav--darkgray: 72,71,71,0.5;
+        --nav--active: 72,71,71,0.5;
+        --gradient-dark: 33,33,33,1;
+        --gradient-light: 56,56,56,1;
+        --dark--container: 85, 85, 85;
+        --contact-backgroundColor: 245, 245, 245; 
+        --card-background: 247, 247, 247;
+        --chip--text: 247, 247, 247;
+        --outline: 0,0,0,0;
+    }
+    
+    .dark{
+        --primary: 233, 233, 233;
+        --lightgray: 158,158,158;
+        --secondary: 56,56,56;
+        --chip--text: 56, 56, 56;
+        --blue: 52, 109, 255;
+        --yellow: 255, 205, 75;
+        --blackShadow: 198, 198, 198;
+        --body--backgroundColor: 33,33,33,1;
+        --nav--active: 158,158,158,0.5;
+        --nav--darkgray: 72,71,71,0.5;
+        --gradient-dark: 33,33,33,1;
+        --gradient-light: 56,56,56,1;
+        --dark--container: 85, 85, 85;
+        --contact-backgroundColor: 33,33,33,1;
+        --card-background: 56, 56, 56;
+        --outline: 104,104,104,1; 
+    }
+    
+    //App.js
+    export default function App() {
+        const [isDark, setIsDark] = useState(false);
+      
+        const handleDark = () => (
+          setIsDark(isDark => !isDark)
+        )
+
+        return (
+          <div className={isDark ? 'relative dark' : 'relative light'}>
+            <Header />
+            <div>
+              <ScrollToTop />
+              // context passes value to child components
+              <Outlet context={isDark} />
+              <Contact />
+            </div>
+            <Footer />
+            // dark mode switch
+            <button
+              className="fixed right-5 bottom-5 w-11 h-11 rounded-full font-medium -bg--primary -text--secondary"
+              onClick={handleDark}>{isDark ?  'LHT' : 'DRK'}
+            </button>  
+          </div>
+        );
+      }
+    `              
+            }
         ]
     },
     {
@@ -504,8 +765,9 @@ const projects = [
         type:'Front-end', 
         title:'React Movie Search App',
         skills: ['React.js','CSS','API', 'JSON'], 
-        description:'The project aims to develop a TMDB movie application using the TMDB API, enabling users to access movie information efficiently. It includes features like saving favourite movies locally and sharing lists on social media.',
+        description:'The project aimed to develop a TMDB movie application using the TMDB API, enabling users to access movie information efficiently.',
         img: '../Assets/Images/thumbnail-react-movie-app.jpg',
+        qr:'../Assets/Images/react-movie-qr.jpg',
         demolink:'https://nosora0422.github.io/react-movie-app/#/',
         overview: 'Originally built with HTML, CSS, and JavaScript, the project transitioned to React.js for improved component management and API integration. Key functionalities include a search feature, saving favourites, and social media sharing, with a focus on optimizing API usage for a seamless user experience.',
         keyPoint:[
@@ -515,7 +777,7 @@ const projects = [
                 content:[
                     {
                         list:'Search',
-                        listDisc:'The user can search movies by the name of the movie.'
+                        listDisc:'Users can search movies by the name of the movie.'
                     },
                     {
                         list:'Browse Movie List',
@@ -537,7 +799,7 @@ const projects = [
                     },
                     {
                         list:'Share List',
-                        listDisc:'The user’s favourite list can be shared on their social media such as Facebook, WhatsApp, and Twitter. '
+                        listDisc:'User’s favourite list can be shared on their social media such as Facebook, WhatsApp, and Twitter. '
                     }
                 ]
             },
@@ -547,11 +809,11 @@ const projects = [
                 content:[
                     {
                         list:'Local Storage',
-                        listDisc:'Get objects from local Storage and save new objects to local storage using setItem() and getItem() with JSON.parse() and JSON.stringify().'
+                        listDisc:'The app gets objects from local Storage and save new objects to local storage using setItem() and getItem() with JSON.parse() and JSON.stringify().'
                     },
                     {
                         list:'API',
-                        listDisc:'Used TMDB API and used functions, fetch() to make network requests and json() to parse the body text to JSON.'
+                        listDisc:'TMDB API and functions, fetch() to make network requests and JSON.parse() to parse the body text to JSON.'
                     },
                 ]
             },
@@ -578,7 +840,7 @@ const projects = [
             {
                 id:0,               
                 language:'javascript',
-                name:'Search',
+                name:'Search Term',
                 codeBlock:
     `
     import React, { createContext, useState, useContext } from 'react';
@@ -665,7 +927,7 @@ const projects = [
             {
                 id:2,
                 language:'javascript',
-                name: 'react-router-dom',
+                name: 'Favourite List',
                 codeBlock:
     ` 
     const [favorites, setFavorites] = useState([]);
@@ -682,7 +944,6 @@ const projects = [
         if (!isSameItem){
             const newFavoriteMovie = [...favorites, { ...movie, isAddedToList: true }];
             setFavorites(newFavoriteMovie);
-            // console.log(newFavoriteMovie);
             saveToLocal(newFavoriteMovie);
             alert('The movie has been successfully added to your list!');
         } else {
@@ -694,321 +955,18 @@ const projects = [
         const newFavoriteMovie = favorites.filter((favorite)=>favorite.id !== movie.id);
         setFavorites(newFavoriteMovie);
         saveToLocal(newFavoriteMovie);
-        // console.log(newFavoriteMovie);
     };
     `              
             }
         ]
     },
-    // {
-    //     id:3,
-    //     type:'Front-end', 
-    //     title:'Logo Animation',
-    //     skills: ['HTML','CSS','JS'], 
-    //     description:'The goal of the project was to create a personal logo animation combining skills of graphic design and animation using CSS keyframes.',
-    //     img: '../Assets/Images/project1-thumbnail.jpg',
-    //     demolink:'https://logoanimation.sarahnoh.ca/',
-    //     overview: 'The project includes a personal logo that was created as an SVG file and the use of CSS keyframes and JS functions. The endeavour demanded considerable dedication to the brainstorming and sketching phases, as the logo bore deep significance to personal identity. The logo animation was implemented to a single landing page in order to go beyond the initial goal and showcase the example of usage in the real world.',
-    //     keyPoint:[
-    //         { 
-    //             id:0,
-    //             cardTitle:'SVG',
-    //             content:[
-    //                 {
-    //                     list:'SVGOMG',
-    //                     listDisc:'Optimized SVG file using SVGOMG for clean and readable code.'
-    //                 },
-    //                 {
-    //                     list:'SVG CSS Organization',
-    //                     listDisc:'Organized SVG styles in a separate CSS file.'
-    //                 },
-    //             ]
-    //         },
-    //         { 
-    //             id:1,
-    //             cardTitle:'Animation',
-    //             content:[
-    //                 {
-    //                     list:'Logo animation',
-    //                     listDisc:'Each SVG elements were animated seperately with @keyframes.'
-    //                 },
-    //                 {
-    //                     list:'Text animation',
-    //                     listDisc:' each character was given with own id name to animate with @keyframes.'
-    //                 },
-    //             ]
-    //         },
-    //         { 
-    //             id:2,
-    //             cardTitle:'Challange & Solution',
-    //             content:[
-    //                 {
-    //                     list:'Repetitive keyframes',
-    //                     listDisc:'Adding individual id name and animating with the individual keyframes are time-consuming and repetitive.'
-    //                 },
-    //                 {
-    //                     list:'querySelectorAll()',
-    //                     listDisc:' the same class names were assigned to these elements instead, enabling the use of \'querySelectorAll()\' and \'for\' loop statement. In the final step, the animation was completed using a user-defined function with the \'animate()\' method.'
-    //                 },
-    //             ]
-    //         },
-    //     ],
-    //     code:[
-    //         {
-    //             id:0,
-    //             language:'css',
-    //             name: 'SVG CSS',
-    //             codeBlock:
-    // `// style.css
-
-    // .cls-1{
-    //     fill:#bcbec0;
-    // }
-    
-    // .cls-2{
-    //     fill:none;
-    //     stroke:#bcbec0;
-    //     stroke-miterlimit:10;
-    //     stroke-width:.47px;
-    // }
-    
-    // .cls-3{
-    //     stroke:#000;
-    //     stroke-miterlimit:10;
-    //     stroke-width:.25px;
-    //     transition-timing-function: ease-in;
-    // }
-
-    // .cls-4{
-    //     fill: none;
-    //     stroke: #000;
-    //     stroke-linejoin: round;
-    //     stroke-width: 4px;
-    //     animation: arrowAnimation 1s ease-in-out infinite;
-    // }`
-                    
-    //         },
-    //         {
-    //             id:1,
-    //             language:'css',
-    //             name: '@keyframes',
-    //             codeBlock:
-    // `
-    // @keyframes noMove {
-    //     0%{
-    //         stroke-dashoffset: 289.5;
-    //     }
-    //     5%{
-    //         stroke-dashoffset: 289.5;
-    //     }
-    //     30%{
-    //         stroke-dashoffset: -160.4;
-    //     }
-    //     100%{
-    //         stroke-dashoffset: -160.4;
-    //     }
-    // }
-    
-    // @keyframes connectionMove {
-    //     0%{
-    //         stroke-dashoffset: 75;
-    //     }
-    //     20%{
-    //         stroke-dashoffset: 75;
-    //     }
-    //     30%{
-    //         stroke-dashoffset: 0;
-    //     }
-    //     100%{
-    //         stroke-dashoffset: 0;
-    //     }
-    // }
-    
-    // .
-    // .
-    // .
-
-    // @keyframes pointMove{
-    //     0%{
-    //         transform: rotate(0deg);
-    //     }
-    //     50%{
-    //         transform: rotate(1080deg);
-    //     }
-    //     100%{
-    //         transform: rotate(1080deg);
-    //     }
-    // }
-
-    // @keyframes ooMove{
-    //     0%{
-    //         transform: translateY(0%);
-    //         animation-timing-function: ease-out;
-    //     }
-    //     50%{
-    //         transform: translateY(-45%);
-    //         animation-timing-function: ease-in;
-    //     }
-    //     100%{
-    //         transform: translateY(0%);
-    //         animation-timing-function: ease-out;
-    //     }
-    // }
-    
-    // .
-    // .
-    // .`
-    //         },
-    //         {
-    //             id:2,
-    //             language:'javascript',
-    //             name: 'JS animate()',
-    //             codeBlock:
-    // ` 
-    // var shape = document.querySelector('#point');
-    // var shapelength = shape.getTotalLength();
-    // console.log(shapelength);
-
-    // var myName = document.querySelectorAll(".cls-3");
-
-    // for(var i = 0; i < myName.length; i++){
-    //     let company = myName[i];
-    //     animateMyName(company);
-    // };
-
-    // function animateMyName(name){
-
-    //     name.keyframes = [
-    //         {
-    //             transform: "translateY(0)",
-    //             offset: 0
-    //         },
-    //         {
-    //             transform: "translateY(-25%)",
-    //             offset: 0.5
-    //         },
-    //         {
-    //             transform: "translateY(0)",
-    //             offset: 1
-    //         }
-    //     ];
-
-    //     name.options = {
-    //         duration: 1500,
-    //         easing: "ease",
-    //         iterations: 2,
-    //         direction: "normal",
-    //         delay: 150*i,
-    //         fill: "both"
-    //     }
-
-    //     let animateMyName = name.animate(name.keyframes, name.options);
-    // };`              
-    //         }
-    //     ]
-    // },
-    // {
-    //     id:4,
-    //     type:'Front-end', 
-    //     title:'Responsive Business Website',
-    //     skills: ['HTML','CSS','JS','jQuery'],  
-    //     description:'The goal was to demonstrate CSS skills using Media Query for responsive design with mobile UI patterns.',
-    //     img: '../Assets/Images/project2-thumbnail.jpg',
-    //     overview:'The choice of the topic aimed to highlight the development of a business website that not only prioritizes responsive design but also emphasizes the implementation of dynamic Jquery functions and JavaScript plug-ins.',
-    //     keyPoint:[
-    //         { 
-    //             id:0,
-    //             cardTitle:'Design',
-    //             content:[
-    //                 {
-    //                     list:'Sitemap',
-    //                     listDisc:'Following the research phase, initial design and planning steps were taken. The sitemap was created on Figjam with consideration of the main audience and user group.'
-    //                 },
-    //                 {
-    //                     list:'Wireframe',
-    //                     listDisc:'Afterwards, a low-fi wireframe for each page was created on Figma.'
-    //                 },
-    //             ]
-    //         },
-    //         { 
-    //             id:1,
-    //             cardTitle:'Responsive',
-    //             content:[
-    //                 {
-    //                     list:'Mobile First Approach',
-    //                     listDisc:'The process was started with a mobile-first approach for an efficient development process. As I started from mobile view first, was able to identify potential challenges early, streamline workflows, and reduce the need for extensive revisions during later stages of development.'
-    //                 },
-    //                 {
-    //                     list:'Break Point',
-    //                     listDisc:'@media screen and (min-width: 568px) @media screen and (min-width: 834px) @media screen and (min-width: 1080px)'
-    //                 },
-    //             ]
-    //         },
-    //         { 
-    //             id:2,
-    //             cardTitle:'Library',
-    //             content:[
-    //                 {
-    //                     list:'Flickity Carousel',
-    //                     listDisc:'A Flickity carousel plugin was implemented for dynamic card slide.'
-    //                 },
-    //                 {
-    //                     list:'jQuery',
-    //                     listDisc:'An accordion-style navigation bar was incorporated using JS in order to demonstrate the use of mobile UI design patterns.'
-    //                 },
-    //             ]
-    //         },
-    //     ],
-    //     code:[
-    //         {
-    //             id:0,
-    //             language:'css',
-    //             name: 'Media Query',
-    //             codeBlock:
-    //             `
-    // //Mobile Break Point
-    // @media screen and (min-width: 568px) {
-        
-    // }
-
-    // //Tablet Break Point
-    // @media screen and (min-width: 834px) {
-        
-    // }
-
-    // //Desktop Break Point
-    // @media screen and (min-width: 1080px) {
-        
-    // }
-    //             `
-    //         },
-    //         {
-    //             id:1,
-    //             language:'javascript',
-    //             name: 'jQuery',
-    //             codeBlock:
-    //             `
-    // //Jquery Hamberger Menu
-    // (function(){
-    //     $(".hamburger").on("click", function(){	
-    //         $('.mobile ul').slideToggle();
-    //         $('.fa-bars').toggle(); 
-    //         $('.fa-xmark').toggle(); 
-    //     });
-    // });
-
-    // //Flickity carousel
-    //             `
-                    
-    //         }
-    //     ]
-    // },
     {
         id:4,
         type:'Front-end', 
         title:'HTML Email Template', 
         skills: ['HTML','CSS','Figma'], 
         description:'The project aimed to create a responsive promotion email template for a fictional soap brand using HTML, CSS and JS.',
+        qr:'../Assets/Images/html-email-qr.jpg',
         img: '../Assets/Images/project3-thumbnail.jpg',
         demolink:'https://nosora0422.github.io/email-template-project/',
         overview:"The fictitious soap company provides a selection of organic soaps crafted from a diverse array of ingredients. The project's objective was to design an email template for the purpose of promoting ongoing sales. The template was designed with a versatile layout that could potentially be employed by other brands sharing similar concepts.",
@@ -1023,7 +981,7 @@ const projects = [
                     },
                     {
                         list:'Research',
-                        listDisc:'the project drew inspiration from real-world examples found in the promotional inbox, offering valuable guidance on planning screen sizes. It indicated that many of these examples used a width ranging from 600 to 640 pixels.'
+                        listDisc:'The project drew inspiration from real-world examples found in the promotional inbox, offering valuable guidance on planning screen sizes. It indicated that many of these examples used a width ranging from 600 to 640 pixels.'
                     },
                 ]
             },
@@ -1084,7 +1042,7 @@ const projects = [
                 language:'css',
                 name: 'Root Style & Media Query',
                 codeBlock:
-                `
+    `
     /*change Colour Here*/
 
     :root{
@@ -1103,9 +1061,86 @@ const projects = [
         body{
             max-width: 640px;
         }
+        .hero{
+            height: 600px;
+        }
+    
+        .title{
+        font-size: 4em;
+        padding: 30px;
+        }
+    
+        .hero-wrapper p{
+        margin-bottom: 80px;
+        }   
+    
+        .items-card{
+            display: flex;
+    
+        }
+        .item-img{
+            width: 60%;
+            height: 500px;
+        }
+    
+        .item-card-wrapper{
+            width: 100%;
+            position: relative;
+        }
+        .item-description-box{
+            width: 50%;
+            height: 360px;
+        }
+    
+        .item-description-wrapper{
+            height: 280px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 75%;
+            padding: 40px 40px;
+        }
+    
+        .description-box1{
+            position: absolute;
+            top: 80px;
+        }
+        .item1{
+            float: right;
+        }
+        .description-box2{
+            position: absolute;
+            top: 80px;
+            right: 0;
+        }
+    
+        .new-items{
+            height: 650px;
+        }    
+    
+        .new-item-box{
+            width: 100%;
+        }
+        .new-item-img-box{
+            width: 50%;
+            height: 400px;
+            top:80px;
+        }
+        .new-item-heading{
+            font-size: 3.5em;
+        }
+        .top{
+            top: 50px;
+        }
+        .bottom{
+            bottom: 130px;
+        }
+        footer{
+            max-width: 640px;
+        }
 
     }
-                `
+    `
                     
             }
         ]

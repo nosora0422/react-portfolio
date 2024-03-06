@@ -1,22 +1,49 @@
+import React, { useState } from 'react';
+
 export default function ProjectBanner({ project }){
+    const [hovered, setHovered] = useState(false);
+
     return(
         <>
-            <section className="relative h-screen flex justify-center items-center lg:h-screen md:py-32" key={project.id}>
+            <section className="relative h-screen flex justify-center items-center lg:h-screen md:py-" key={project.id}>
                 <div className="my-grid max-w-[1200px] px-6 pt-10">
                     <div className="col-span-12">
                         <div className="my-grid">
-                            <img src={project.img} className="col-span-12 max-h-[60vh] mx-auto object-top object-cover aspect-4/3 drop-shadow-lg rounded-xl lg:col-span-6" alt={project.title}/>
+                            <div className='relative col-span-12 max-h-[60vh] mx-auto drop-shadow-lg lg:col-span-6'>
+                                <img 
+                                    src={hovered ? project.qr : project.img} 
+                                    className="object-top object-cover aspect-4/3 rounded-xl" 
+                                    alt={project.title}
+                                    
+                                />
+                                <button 
+                                    className="absolute bottom-2 left-2 px-4 rounded-full -bg--lightgray/25 -text--grey text-base font-Manrope font-medium hover:-bg--lightgray/60"
+                                    onMouseEnter={() => setHovered(true)}
+                                    onMouseLeave={() => setHovered(false)}
+                                >
+                                    
+                                    <i className="fa-solid fa-qrcode"></i>
+                                    
+                                </button>
+                            </div>
                             <div className="col-span-12 py-4 md:py-6 md:px-5 lg:col-span-6">
-                                <p className="blue-lable">{project.type}</p>
+                                <p className="-text--blue text-base inline-block font-semibold">{project.type}</p>
                                 <h4>{project.title}</h4>
                                 <p className="body--gray">{project.description}</p>
                                 <div className="py-5">
                                     <ul className="pb-5">
                                         {project.skills && project.skills.map((skill, index) => (
-                                            <li key={index} className='inline-block -text--chip--text font-Manrope text-sm py-1 px-5 mb-3 mr-1 -bg--primary rounded-full md:text-base'>{skill}</li>
+                                            <li key={index} className='inline-block -text--chip--text font-Manrope text-base py-1 px-5 mb-2 mr-3 -bg--chip--background rounded-full'>{skill}</li>
                                         ))}
                                     </ul>
-                                    <a className="button drop-shadow-lg mt-0 lg:mt-6" href={project.demolink} target="new">Live Demo<i className="fa-solid fa-arrow-right ml-2"></i></a>
+                                    <div className="flex gap-4">
+                                        <a 
+                                            className="button drop-shadow-lg mt-0 lg:mt-6" 
+                                            href={project.demolink} 
+                                            target="new"
+                                        >Live Demo<i className="fa-solid fa-arrow-right ml-2"></i>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>

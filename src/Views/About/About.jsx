@@ -1,4 +1,5 @@
 import { useOutletContext } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 
 import Banner from '../../Components/Banner/Banner';
 import AboutBanner from '../../Assets/Spline/AboutBanner/AboutBanner';
@@ -11,6 +12,11 @@ export default function About(){
     const isDark = useOutletContext();
     return(
         <div>
+            <Helmet>
+                <title>About - Sora Noh, Creative Front End Developer</title>
+                <meta name="description" content="I'm Sora Noh, and I'm passionate about Web-development. My journey into this world began in the New Media design and Web Development program, ignited by my deep curiosity about user interactions. I love problem-solving, and coding, especially using HTML, CSS, and JavaScript." />
+                <meta name="keywords" content="core-values about Web-development skills resume" />
+            </Helmet>
             <Banner 
                 h1='ABOUT'
                 h2first="HELLO! I'M &nbsp;"
@@ -26,9 +32,9 @@ export default function About(){
                             <div className="mb-14">
                                 <h3>ABOUT ME<span className="point-dot -bg--yellow"></span></h3>
                                 <p className="body--gray">Hello!<br/><br/>
-                                I'm Sora Noh, and I'm passionate about <span className="inline-block text-sm font-medium -bg--primary -text--chip--text py-1 px-2.5 rounded-full"> <span className="mr-1.5">&#128421;</span> Web-development</span>. I'm currently located in Vancouver BC! My journey into this world began in the New Media design and Web Development program, ignited by my deep curiosity about user interactions. I love problem-solving, and coding, especially using HTML, CSS, and JavaScript. These skills have become my specialty in contributing to building solutions during the program.<br/><br/>
-                                When I'm not engrossed in coding, I enjoy creating dynamic video and graphic animations using After Effects and Premiere Pro. <span className="inline-block text-sm font-medium -bg--primary -text--chip--text py-1 px-2.5 rounded-full"> <span className="mr-1.5">&#128247;</span>Video-Editing </span> refreshes my approach to design thinking and communication.<br/><br/>
-                                I also enjoy <span className="inline-block text-sm font-medium -bg--primary -text--chip--text py-1 px-2.5 rounded-full"> <span className="mr-1.5"> &#127956;</span>hiking</span>, especially when I reach the mountaintop and get to appreciate the incredible views. The views at the end of a challenging hike never fail to impress me.</p>
+                                I'm Sora Noh, and I'm passionate about <span className="inline-block text-sm font-medium -bg--chip--background -text--chip--text  py-1 px-2.5 rounded-full"> <span className="mr-1.5">&#128421;</span> Web-development</span>. I'm currently located in Vancouver BC! My journey into this world began in the New Media design and Web Development program, ignited by my deep curiosity about user interactions.<br/><br/> I love problem-solving, and coding, especially using HTML, CSS, and JavaScript. These skills have become my specialty in contributing to building solutions during the program.<br/><br/>
+                                When I'm not engrossed in coding, I enjoy creating dynamic video and graphic animations using After Effects and Premiere Pro. <span className="inline-block text-sm font-medium -bg--chip--background -text--chip--text  py-1 px-2.5 rounded-full"> <span className="mr-1.5">&#128247;</span>Video-Editing </span> refreshes my approach to design thinking and communication.<br/><br/>
+                                I also enjoy <span className="inline-block text-sm font-medium -bg--chip--background -text--chip--text  py-1 px-2.5 rounded-full"> <span className="mr-1.5"> &#127956;</span>hiking</span>, especially when I reach the mountaintop and get to appreciate the incredible views. The views at the end of a challenging hike never fail to impress me.</p>
                             </div>
                             <div className="w-full pt-20">
                                 <h3>MY CORE VALUES<span className="point-dot -bg--yellow"></span></h3>
@@ -77,7 +83,7 @@ export default function About(){
                         <div className="relative col-span-12 -order-1 md:col-span-6 ">
                             <div className='flex flex-col items-center h-auto mb-24 md:mb-0 md:sticky md:top-[15vh]'>
                                 <img 
-                                    src={require('../../Assets/Images/Sora_Noh_Profile.jpg')} 
+                                    src='../../Assets/Images/Sora_Noh_Profile.jpg'
                                     className="w-full max-w-[800px] md:h-[70vh] object-top object-cover rounded-2xl drop-shadow-lg" 
                                     alt="Sora Noh Profile" 
                                 />
