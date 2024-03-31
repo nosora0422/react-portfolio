@@ -59,10 +59,10 @@
         @apply text-lg font-bold -text--primary font-Josefin mb-4 sm:text-2xl md:text-3xl;
     }
     h2 {
-        @apply text-4xl font-bold -text--primary font-Josefin sm:text-6xl sm:-mr-1.5 md:text-8xl md:-ml-1.5;
+        @apply text-4xl font-bold -text--primary font-Josefin sm:text-6xl sm:-mr-1.5 md:text-8xl md:-mr-1;
     }
     h3 {
-        @apply -text--primary mb-10 mr-2 text-2xl font-black font-Josefin leading-none md:text-4xl lg:text-6xl dark:-text--body--backgroundColor;
+        @apply -text--primary mb-10 mr-2 text-2xl font-black font-Josefin leading-none md:text-4xl lg:text-6xl;
     }
     h4{
         @apply pt-1 pb-5 -text--primary font-Manrope text-xl md:text-2xl font-bold leading-7;
@@ -100,13 +100,9 @@
     .button{
         @apply relative font-Manrope -bg--blue text-white inline-block py-3 px-8 mt-8 rounded-full font-semibold drop-shadow-lg transition-colors hover:bg-blue-800;
     }
-    .arrow-down{
-        @apply -text--primary w-10 h-10 animate-bounce -translate-x-1/2;
-    }
     .logo{
         @apply absolute bottom-4 right-16 w-8 h-8 z-30 bg-spline bg-cover;
     }
-
     .blue-lable{
         @apply -text--blue text-base py-1 px-4 inline-block border border-solid -border--blue rounded-full font-semibold;
     }

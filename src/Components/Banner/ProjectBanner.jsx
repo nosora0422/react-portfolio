@@ -4,25 +4,24 @@ export default function ProjectBanner({ project }){
     const [hovered, setHovered] = useState(false);
 
     return(
-        <>
-            <section className="relative h-screen flex justify-center items-center lg:h-screen md:py-" key={project.id}>
-                <div className="my-grid max-w-[1200px] px-6 pt-10">
+            <div className="relative h-screen flex justify-center items-center lg:h-screen md:py-" key={project.id}>
+                <div className="my-grid max-w-[1200px] px-6 sm:pt-10">
                     <div className="col-span-12">
                         <div className="my-grid">
                             <div className='relative col-span-12 max-h-[60vh] mx-auto drop-shadow-lg lg:col-span-6'>
                                 <img 
                                     src={hovered ? project.qr : project.img} 
-                                    className="object-top object-cover aspect-4/3 rounded-xl" 
+                                    className="object-top object-cover aspect-4/3 sm:h-full mx-auto rounded-xl" 
                                     alt={project.title}
                                     
                                 />
                                 <button 
-                                    className="absolute bottom-2 left-2 px-4 rounded-full -bg--lightgray/25 -text--grey text-base font-Manrope font-medium hover:-bg--lightgray/60"
+                                    className="hidden lg:block absolute bottom-2 left-2 px-4 rounded-full -bg--blue text-white text-base font-Manrope font-medium hover:-bg--lightgray/60"
                                     onMouseEnter={() => setHovered(true)}
                                     onMouseLeave={() => setHovered(false)}
                                 >
                                     
-                                    <i className="fa-solid fa-qrcode"></i>
+                                    <i className="fa-solid fa-mobile-screen-button"></i>
                                     
                                 </button>
                             </div>
@@ -49,13 +48,12 @@ export default function ProjectBanner({ project }){
                         </div>
                     </div>
                 </div>
-                <div className="flex flex-col items-center absolute w-20 left-1/2 -translate-x-1/2 bottom-6" >
-                    <p className="body--gray mb-3">Scroll</p>
-                    <svg className="arrow-down" width="50" height="14" viewBox="0 0 31 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path className="-stroke--primary" d="M1 1L15.1375 12L30 1" strokeWidth="2"/>
-                    </svg>
+                <div className="flex flex-col items-center absolute w-12 left-1/2 -translate-x-1/2 bottom-2 md:w-20" >
+                <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="-20 0 80 80">
+                    <rect x=".86" y=".86" width="33.03" height="56.29" rx="16.52" ry="16.52" style={{fill:'none', stroke:'rgb(158,158,158)', strokeMiterlimit:10, strokeWidth:2}}/>
+                    <circle cx="17.37" cy="13.97" r="4.73" className='animate-mouseWheelAnim' style={{fill:'rgb(158,158,158)', strokeWidth:0}}/>
+                </svg>
                 </div>
-             </section>
-        </>
+             </div>
     )
 }

@@ -19,6 +19,7 @@ export default function Card({ type, title, description, path, column, skills, o
         setMousePosition({ x: offsetX, y: offsetY });
     };
 
+    
 
     return(
             <div 

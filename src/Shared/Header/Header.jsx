@@ -1,4 +1,3 @@
-
 import { Link, useLocation } from "react-router-dom";
 import { useState } from 'react';
 import { motion } from 'framer-motion';
@@ -87,7 +86,8 @@ export default function Header(){
                                             cRoute.pathname ==='/project-details/1'|| 
                                             cRoute.pathname ==='/project-details/2'||
                                             cRoute.pathname ==='/project-details/3'||
-                                            cRoute.pathname ==='/project-details/4'
+                                            cRoute.pathname ==='/project-details/4'||
+                                            cRoute.pathname ==='/project-details/5'
                                         ) 
                                         ? "point-dot" : "point-dot -bg--lightgray"}></span>
                                 </Link>
@@ -99,7 +99,9 @@ export default function Header(){
             <nav className="mobile-nav lg:hidden"> 
                 <div className="mx-auto py-2 px-6 rounded-3xl -bg--nav--darkgray backdrop-blur-sm border border-solid 1px -border--lightgray">
                     <div className="flex items-center justify-between">
-                        <a href="/home"><img src="../Assets/Images/Logo-white.png" className="w-14 object-cover object-center" alt="logo-img" /></a>
+                        <Link to="/">
+                            <img src="../Assets/Images/Logo-white.png" className="w-14 object-cover object-center" alt="logo-img" />
+                        </Link>
                         <button 
                             href="#" 
                             className="hamburger"  
@@ -142,7 +144,8 @@ export default function Header(){
                                         cRoute.pathname ==='/project-details/1'|| 
                                         cRoute.pathname ==='/project-details/2'||
                                         cRoute.pathname ==='/project-details/3'||
-                                        cRoute.pathname ==='/project-details/4'
+                                        cRoute.pathname ==='/project-details/4'||
+                                        cRoute.pathname ==='/project-details/5'
                                     ) 
                                     ? 'py-4 px-6 text-right font-Josefin rounded-full text-lg leading-none -text--onDark -bg--nav--darkgray my-3' :'font-Josefin text-right text-lg leading-none -text--onDark py-4 px-4 my-3'}
                                 onClick={handleToggle}    
@@ -155,7 +158,8 @@ export default function Header(){
                                     cRoute.pathname ==='/project-details/1'|| 
                                     cRoute.pathname ==='/project-details/2'||
                                     cRoute.pathname ==='/project-details/3'||
-                                    cRoute.pathname ==='/project-details/4'
+                                    cRoute.pathname ==='/project-details/4'||
+                                    cRoute.pathname ==='/project-details/5'
                                 ) 
                                     ? "point-dot" : "point-dot -bg--lightgray"}></span>
                             </Link>

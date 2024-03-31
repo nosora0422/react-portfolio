@@ -72,7 +72,7 @@ const projects = [
                     },
                     {
                         list:'Components',
-                        listDisc:'Developed reusable components for seamless integration with other elements such as the search bar and the button groups.'
+                        listDisc:'Reusable components for seamless integration with other elements such as the search bar and the button groups.'
                     },
                     {
                         list:'useState() Hook',
@@ -494,7 +494,7 @@ export default function List({ searchTerm }){
             <div>
                 <p>The portfolio underwent a transformation from HTML, CSS, and JavaScript to React.js in order to streamline development and maintenance processes.</p><br/>
                 <p> Utilizing <span className="font-semibold -text--blue">React's component-based architecture</span>, a separate data file containing an object array was created to facilitate the rendering of repetitive UI elements and pages within a single component. This approach <span className="font-semibold -text--blue">significantly reduced the overall codebase</span> by consolidating redundant code and simplifying content updates.</p><br/> 
-                <p>The transition to React not only <span className="font-semibold -text--blue">enhanced code maintainability</span> but also expedited development cycles, allowing for more <span className="font-semibold -text--blue">efficient management</span> of both data and UI styles'</p>
+                <p>The transition to React not only <span className="font-semibold -text--blue">enhanced code maintainability</span> but also expedited development cycles, allowing for more <span className="font-semibold -text--blue">efficient management</span> of both data and UI styles.</p>
             </div>
         ),
         keyPoint:[
@@ -535,7 +535,7 @@ export default function List({ searchTerm }){
                 ]
             },
             { 
-                id:3,
+                id:2,
                 cardTitle:'Data Rendering',
                 content:[
                     {
@@ -804,7 +804,7 @@ export default function List({ searchTerm }){
                 ]
             },
             { 
-                id:3,
+                id:2,
                 cardTitle:'Data',
                 content:[
                     {
@@ -818,7 +818,7 @@ export default function List({ searchTerm }){
                 ]
             },
             { 
-                id:4,
+                id:3,
                 cardTitle:'Key Elements',
                 content:[
                     {
@@ -1142,6 +1142,432 @@ export default function List({ searchTerm }){
     }
     `
                     
+            }
+        ]
+    },
+    {
+        id:5,
+        type:'Front-end', 
+        title:'React Mobile app',
+        skills: ['React Native','API','Figma'], 
+        description:'The objective of this project was to develop a mobile application enabling users to search for and save places based on their operating hours.',
+        img: '../Assets/Images/thumbnail-react-native-app.jpg',
+        qr:'../Assets/Images/react-portfolio-qr.jpg',
+        demolink:'https://sarahnoh.ca',
+        overview: (
+            <div>
+                <p>The target audience for this app is night owls who predominantly engage during the evening hours, with <span className="font-semibold -text--blue">convenient access to venues where they can stay late</span>. Initially, a hard-coded data file was utilized to establish the fundamental framework. Subsequently, integration with <span className="font-semibold -text--blue">the Yelp API</span> was implemented to enable dynamic data usage. <br/><br/>  A combination of <span className="font-semibold -text--blue">Native Stack Navigator and Bottom Bar Navigator</span> was employed to design user pathways, simplifying the structure by rendering information on a single screen despite of different user paths. <br/><br/>The app was built with Expo and Android Studio, incorporating various libraries to create diverse UI designs. A future enhancement includes incorporating a feature to search for nearby venues based on the current location to enhance the User Experience.
+                </p>
+
+            </div>
+        ),
+        keyPoint:[
+            { 
+                id:0,
+                cardTitle:'.Feature',
+                content:[
+                    {
+                        list:'Search Place',
+                        listDisc:'This component efficiently handles the rendering of detailed project information fetched from the data file.'
+                    },
+                    {
+                        list:'Filter by category',
+                        listDisc:'Users can navigate through cities and refine their search results by selecting specific categories, streamlining their exploration process.'
+                    },
+                    {
+                        list:'Save to List',
+                        listDisc:'Each venue discovered can be effortlessly added to the user\'s personalized favourite list, ensuring easy access for future reference.'
+                    },
+                ]
+            },
+            { 
+                id:1,
+                cardTitle:'Key elements',
+                content:[
+                    {
+                        list:'Asyncstorage',
+                        listDisc:'Utilizing AsyncStorage, the app stores users\' favourite lists locally, ensuring seamless access to saved venues.'
+                    },
+                    {
+                        list:'Axios',
+                        listDisc:'Axios was chosen for its streamlined error handling capabilities during HTTP requests, offering built-in support for efficiently managing network errors, server errors, and other unexpected issues.'
+                    },
+                    {
+                        list:'RNE Theme',
+                        listDisc:'The app\'s UI is enhanced with the React Native Elements (RNE) Theme, ensuring a cohesive and visually appealing design across different components and screens.'
+                    }
+                ]
+            },
+        ],
+        
+        code:[
+            {
+                id:0,               
+                language:'javascript',
+                name:'Save to List',
+                codeBlock:
+    `
+    import axios from 'axios';
+    import AsyncStorage from '@react-native-async-storage/async-storage';
+    .
+    .
+    .
+    function displayDetialData(error, isLoaded, detailResult) {
+    const [isFavorite, setIsFavorite] = useState(null);
+    const [favorites, setFavorites] = useState([]);
+
+    useEffect(() => {
+        async function getData() {
+            try {
+                const value = await AsyncStorage.getItem('myPlace');
+                if (value !== null) {
+                    setFavorites(JSON.parse(value));
+                }
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        }
+    
+        getData();
+    }, []);
+
+    const handleFav = async (item) => {
+        setIsFavorite(prev => !prev);
+        const storedFavorites = await AsyncStorage.getItem('myPlace');
+        let favoritesArray = [];
+        if (storedFavorites) {
+            favoritesArray = JSON.parse(storedFavorites);
+        }
+        const isExistFavorite = favoritesArray.some(favItem => favItem === item);
+    
+        if (!isExistFavorite) {
+            const updatedFavoritesArray = [...favoritesArray, item];
+            await AsyncStorage.setItem('myPlace', JSON.stringify(updatedFavoritesArray));
+            setFavorites(updatedFavoritesArray);
+        } else {
+            return createTwoButtonAlert();
+        }
+    };
+    .
+    .
+    . 
+    }  
+    `
+                    
+            },
+            {
+                id:1,
+                language: 'javascript',
+                name:'RNE Theme',
+                codeBlock:
+    `
+    import { createTheme } from '@rneui/themed';
+
+    const themePalette = {
+        primary: '#A6FF96',
+        secondery: '#383838',
+        button:'#ffffff',
+        outline:'#404040',
+        onDark:'#ffffff',
+        darkContainer:'#2E2E2E',
+        inputContainer:'#1a1a1a',
+    }
+
+    export const darkTheme = createTheme({    
+        components: {
+            Button: {
+                buttonStyle: {
+                    width: '100%',
+                    flex: 1,
+                    alignItems:'center',
+                    justifyContent: 'space-between',
+                    raised: true,
+                    borderRadius: 12,
+                    backgroundColor: themePalette.button,
+                    paddingVertical: 4,
+                },
+                titleStyle: {
+                    color: themePalette.secondery,
+                    fontSize: 48,
+                    fontWeight:'normal',
+                    fontFamily: 'Archivo_200ExtraLight',
+                    textAlign: 'left',
+                },
+                icon: {
+                    color: themePalette.secondery,
+                },
+                type: 'clear',
+            },
+            Text: {
+                h1Style: {
+                    color: themePalette.onDark,
+                    fontSize:48,
+                    fontWeight:'normal',
+                    fontFamily: 'Archivo_200ExtraLight',
+                },
+                h2Style: {
+                    color: themePalette.primary,
+                    fontSize: 48,
+                    fontWeight:'normal',
+                    fontFamily: 'Archivo_700Bold',
+                },
+                h3Style: {
+                    color: themePalette.onDark,
+                    fontSize: 20,
+                    fontWeight:'normal',
+                    fontFamily: 'Archivo_200ExtraLight',
+                },
+                h4Style: {
+                    color: themePalette.secondery,
+                    fontSize: 24,
+                    fontWeight:'normal',
+                    fontFamily: 'Archivo_200ExtraLight',
+                },
+                style: {
+                    color: themePalette.onDark,
+                    fontSize: 16,
+                    fontWeight:'normal',
+                    fontFamily: 'Archivo_300Light',
+                }
+            },      
+            FAB: {
+                buttonStyle: {
+                    raised: true,
+                    borderRadius: 15,
+                    backgroundColor: themePalette.primary,
+                },
+                titleStyle: {
+                    color: themePalette.alternate,
+                },
+                icon: {
+                    color: themePalette.alternate,            
+                },
+                type: 'clear',
+            },
+            ButtonGroup : {
+                containerStyle:{
+                    height: 32,
+                    width: 600,
+                    backgroundColor: 'transparent',
+                    borderWidth: 0,
+                },
+                buttonContainerStyle:{
+                    borderRadius: 30,
+                    marginRight: 8,
+                    borderWidth: 1,
+                    borderColor: themePalette.outline,
+                },
+                selectedButtonStyle:{
+                    borderRadius: 30,
+                    backgroundColor: themePalette.primary,
+                },
+                selectedTextStyle:{
+                    color: themePalette.secondery,
+                },
+                textStyle: {
+                    color: themePalette.onDark,
+                }
+            },
+        },
+
+
+    });
+    `
+            },
+            {
+                id:2,
+                language:'javascript',
+                name: 'Navigation',
+                codeBlock:
+    ` 
+    const LocationStack = createNativeStackNavigator();
+    function LocationStackScreen(){
+    return (
+        <LocationStack.Navigator
+        screenOptions={{
+            headerTintColor: '#ffffff',
+            headerStyle: { 
+            backgroundColor: '#000000', 
+            },
+            headerTitleStyle: {
+            fontFamily: 'Archivo_600SemiBold', 
+            fontWeight: 'normal',
+            },
+
+        }}
+        >
+        <LocationStack.Screen
+            name="Location"
+            component={LocationScreen}
+        />
+        <LocationStack.Screen
+            name="LocationList"
+            component={PlaceListScreen}
+            options={{
+            title: 'Location List',
+            }}  
+        />
+        <LocationStack.Screen
+            name="Details"
+            component={DetailScreen}  
+        />
+        </LocationStack.Navigator>
+    )
+    }
+
+
+    const SearchStack = createNativeStackNavigator();
+    function SearchStackScreen(){
+    return (
+        <SearchStack.Navigator
+        screenOptions={{
+            headerTintColor: '#ffffff',
+            headerStyle: { 
+            backgroundColor: '#000000', 
+            },
+            headerTitleStyle: {
+            fontFamily: 'Archivo_600SemiBold', 
+            fontWeight: 'normal',
+
+            }
+        }}
+        >
+        <SearchStack.Screen
+            name="Search"
+            component={SearchScreen}  
+        />
+        <SearchStack.Screen
+            name="SerchList"
+            component={PlaceListScreen}  
+        />
+        <SearchStack.Screen
+            name="Details"
+            component={DetailScreen}  
+        />
+        </SearchStack.Navigator>
+    )
+    }
+
+    const FavoriteStack = createNativeStackNavigator();
+    function FavoriteStackScreen(){
+    return (
+        <FavoriteStack.Navigator
+        screenOptions={{
+            headerTintColor: '#ffffff',
+            headerStyle: { 
+            backgroundColor: '#000000', 
+            },
+            headerTitleStyle: {
+            fontFamily: 'Archivo_600SemiBold', 
+            fontWeight: 'normal',
+
+            }
+        }}
+        >
+        <FavoriteStack.Screen
+            name="Favorite"
+            component={FavoriteScreen}  
+        />
+        <FavoriteStack.Screen
+            name="FavoriteDetails"
+            component={DetailScreen}
+            options={{
+            title: 'Details',
+            }}  
+        />
+        </FavoriteStack.Navigator>
+    )
+    }
+
+    return (
+        <SafeAreaProvider>
+        <ThemeProvider theme={darkTheme}>
+            <NavigationContainer>
+            <Tap.Navigator
+                initialRouteName="LocationMain" 
+                screenOptions={{ 
+                headerShown: false,
+                tabBarActiveTintColor:'#A6FF96',
+                tabBarInactiveTintColor:'#ffffff',
+                tabBarItemStyle:{
+                    margin:8,
+                },
+                tabBarStyle: { 
+                    borderRadius:50,
+                    position: 'absolute',
+                    bottom: 12,
+                    marginHorizontal: 12,
+                    backgroundColor: '#353535',
+                    shadowColor: '#000000',
+                    shadowOpacity: 0.5,
+                    shadowRadius: 11,
+                    borderColor: 'transparent',
+                    height: 56,
+                } 
+                }}
+            >
+                <Tap.Screen 
+                name="LocationMain"
+                component={LocationStackScreen}
+                options={{
+                    title:'Place',
+                    tabBarIcon:({ color, size }) => (
+                    <Icon
+                        type='material-community'
+                        name="map-marker-outline"
+                        color={color}
+                        size={size}              
+                    />
+                    ),
+                }}
+                />
+                <Tap.Screen 
+                name="SearchMain"
+                component={SearchStackScreen}
+                options={{
+                    title:'Search',
+                    tabBarIcon:({ color, size }) => (
+                    <Icon
+                        type='material-community'
+                        name="filter"
+                        color={color}
+                        size={size}              
+                    />
+                    ),
+                }}
+                />
+                <Tap.Screen 
+                name="FavoriteMain"
+                component={FavoriteStackScreen}
+                options={{
+                    title:'Favorite',
+                    tabBarIcon:({ color, size }) => (
+                    <Icon
+                        type='material-community'
+                        name="bookmark-outline"
+                        color={color}
+                        size={size}              
+                    />
+                    ),
+                }}
+                />
+            </Tap.Navigator>
+            </NavigationContainer>
+        </ThemeProvider>
+        </SafeAreaProvider>
+    );
+    }
+
+    const myStyle = StyleSheet.create({
+    loadingContainer:{
+        flex: 1,
+        justifyContent: "center",
+        flexDirection: "row",
+        justifyContent: "space-around",
+        padding: 10
+    }
+    })
+    `              
             }
         ]
     },

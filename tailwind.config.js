@@ -35,6 +35,7 @@ module.exports = {
         buttonAnim: 'buttonAnim 500ms ease-in',
         footerAnim: 'background-color 200ms ease-in',
         opacityAnim: 'buttonOpacity 300ms ease-in-out',
+        mouseWheelAnim: 'mouseWheel 2s ease-in-out infinite',
       },
       keyframes: {
         buttonAnim: {
@@ -44,6 +45,11 @@ module.exports = {
         buttonOpacity:{
           '0%' : {opacity: 0},
           '100%':{opacity: 1},
+        },
+        mouseWheel:{
+          '0%' : {opacity: 0, transform: 'translateY(0%)'},
+          '50%':{opacity: 1, transform: 'translateY(40%)'},
+          '100%':{opacity: 0, transform: 'translateY(40%)'},
         }
       },
       margin:{

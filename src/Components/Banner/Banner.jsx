@@ -11,7 +11,7 @@ export default function Banner(props){
 
 
     return(
-        <section className="mx-auto h-svh relative flex justify-center items-center">
+        <div className="mx-auto h-svh relative flex justify-center items-center">
             <div className="w-screen h-svh">
                 <BannerComponent />
             </div>
@@ -59,12 +59,12 @@ export default function Banner(props){
                     </div>}
                 </div>
             </div>
-            <div className="flex flex-col items-center absolute w-20 left-1/2 -translate-x-1/2 bottom-6" >
-                <p className="body--gray mb-3">Scroll</p>
-                <svg className="arrow-down" width="50" height="14" viewBox="0 0 31 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path className="-stroke--primary" d="M1 1L15.1375 12L30 1" strokeWidth="2"/>
+            <div className="flex flex-col items-center absolute w-12 left-1/2 -translate-x-1/2 bottom-2 md:w-20" >
+                <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="-20 0 80 80">
+                    <rect x=".86" y=".86" width="33.03" height="56.29" rx="16.52" ry="16.52" style={{fill:'none', stroke:'rgb(158,158,158)', strokeMiterlimit:10, strokeWidth:2}}/>
+                    <circle cx="17.37" cy="13.97" r="4.73" className='animate-mouseWheelAnim' style={{fill:'rgb(158,158,158)', strokeWidth:0}}/>
                 </svg>
             </div>
-        </section>
+        </div>
     )
 }

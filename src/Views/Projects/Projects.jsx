@@ -56,7 +56,7 @@ export default function Projects(){
                                     <p className="text-base font-bold font-Josefin -text--primary md:text-lg lg:text-xl">REUSABLE,</p>
                                     <p className="text-base font-bold font-Josefin -text--primary md:text-lg lg:text-xl">MAINTAINABLE</p>
                                 </div>
-                                <h3>DEVELOPMENT PROJECTS<span className="point-dot"></span></h3>
+                                <h3>DEVELOPMENT<span className="point-dot"></span></h3>
                             </div>
                             <p className="body--gray max-w-[600px]">I strive for solutions that are not only effective and efficient but also easily comprehensible, capable of addressing issues across various levels, and adaptable for swift updates. <br/><br/> This approach enables the development of organized and easily troubleshootable code. Through overcoming project challenges, I've honed my skills as a meticulous and inventive developer.</p>
                         </div>

@@ -8,7 +8,7 @@ export default function Footer(){
                     <a className="w-9 h-9 flex justify-center items-center -text--grey -bg--background border border-solid -border--lightgray rounded-full hover:-text--lightgray transition-colors" href="mailto:nosora0422@gmail.com"><i className="fa-solid fa-envelope fa-lg"></i></a>
                     <a className="w-9 h-9 flex justify-center items-center -text--grey -bg--background border border-solid -border--lightgray rounded-full hover:-text--lightgray transition-colors" href="http://github.com/nosora0422" target="new"><i className="fa-brands fa-github fa-lg"></i></a>
                 </div>
-                <p className="mt-5 text-center -text--primary">&copy; Sora Noh 2023</p>
+                <p className="mt-5 text-center -text--primary">&copy; Sora Noh 2024</p>
             </div>
         </footer>
     )
