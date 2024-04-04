@@ -88,7 +88,7 @@ const projects = [
                 slideImgPath:'../../Assets/Images/react-note-firebase.png'
             },
             {
-                name: 'To-do-list',
+                name: 'List, Note, Image tab',
                 slideImgPath:'../../Assets/Images/react-note-screen.png'
             },
             {
@@ -407,13 +407,13 @@ export default function List({ searchTerm }){
         type:'Front-end', 
         title:'React Native Mobile app',
         skills: ['React Native','API','Figma'], 
-        description:'The objective of this project was to develop a mobile application enabling users to search for and save places based on their operating hours.',
+        description:'The objective of this project was to develop a mobile application enabling users to search for places based on bussiness hours and create a favourite list.',
         img: '../Assets/Images/thumbnail-react-native-app.jpg',
         gitHubLink:'https://github.com/nosora0422/react-mobile-app',
         // demolink:'https://sarahnoh.ca',
         overview: (
             <div>
-                <p>The target audience for this app is night owls who predominantly engage during the evening hours, with <span className="font-semibold -text--blue">convenient access to venues where they can stay late</span>. Initially, a hard-coded data file was utilized to establish the fundamental framework. Subsequently, integration with <span className="font-semibold -text--blue">the Yelp API</span> was implemented to enable dynamic data usage. <br/><br/>  A combination of <span className="font-semibold -text--blue">Native Stack Navigator and Bottom Bar Navigator</span> was employed to design user pathways, simplifying the structure by rendering information on a single screen despite of different user paths. <br/><br/>The app was built with Expo and Android Studio, incorporating various libraries to create diverse UI designs. A future enhancement includes incorporating a feature to search for nearby venues based on the current location to enhance the User Experience.
+                <p>The target audience for this app is night owls who predominantly engage during the evening hours, with <span className="font-semibold -text--blue">convenient access to venues where they can stay late</span>. Initially, a hard-coded data file was utilized to establish the fundamental framework. Subsequently, integration with <span className="font-semibold -text--blue">the Yelp API</span> was implemented to enable dynamic data usage. <br/><br/>  A combination of <span className="font-semibold -text--blue">Native Stack Navigator and Bottom Bar Navigator</span> was employed to design user paths, simplifying the structure by rendering information on a single screen despite of different user paths. <br/><br/>The app was built with Expo and Android Studio, incorporating various libraries to create diverse UI designs. A future enhancement includes incorporating a feature to search for places based on the current location to enhance the User Experience.
                 </p>
 
             </div>
@@ -421,7 +421,7 @@ export default function List({ searchTerm }){
         keyPoint:[
             { 
                 id:0,
-                cardTitle:'.Feature',
+                cardTitle:'Feature',
                 content:[
                     {
                         list:'Search Place',
